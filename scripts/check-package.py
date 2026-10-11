@@ -80,7 +80,8 @@ def check_manifest():
             "Download URL must pin the exact manifest release version")
     require(manifest_url.netloc in ("raw.githubusercontent.com", "github.com"),
             "Install manifest must be hosted on GitHub")
-    require(download_url.netloc == "github.com", "Release archive must be hosted on GitHub")
+    require(download_url.netloc in ("github.com", "raw.githubusercontent.com"),
+            "Release archive must be hosted on GitHub")
     require(manifest_url.path.strip("/").split("/")[:2] == download_url.path.strip("/").split("/")[:2],
             "Manifest and archive must belong to the same GitHub repository")
     require(download_url.path.rsplit("/", 1)[-1] == f"{identifier}-{version}.zip",

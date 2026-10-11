@@ -7,7 +7,7 @@
 В Foundry откройте **Setup → Add-on Modules → Install Module**, вставьте адрес в **Manifest URL** и нажмите **Install**:
 
 ```text
-https://github.com/Defaulter444/CPR-Interface/releases/latest/download/module.json
+https://raw.githubusercontent.com/Defaulter444/CPR-Interface/main/module.json
 ```
 
 В мире включите **Night City 2045 — Атлас Мастера** через **Manage Modules**, затем перезагрузите мир. Откройте **Game Settings → Configure Settings → Module Settings → Атлас Найт-Сити 2045 → Открыть карту**. У Мастера также появится кнопка карты в инструментах заметок сцены.
@@ -45,7 +45,7 @@ python3 scripts/build-release.py
 python3 scripts/check-package.py
 ```
 
-Готовые файлы выпуска появляются в `dist/`. Автоматические проверки используют модель API Foundry и настоящий Chromium; проверка в лицензированном Foundry выполняется по шагам выше. Совместимость заявлена для v12; v13 не проверялась.
+Готовые файлы выпуска появляются в `dist/`. Команда `python3 scripts/publish-files.py` подготавливает версионированные файлы в `releases/vVERSION/` для публикации коммитом; существующий выпуск с другими байтами не перезаписывается. Манифест загружается с GitHub Raw и содержит прямую ссылку на ZIP той же версии; вход в GitHub не нужен. Автоматические проверки используют модель API Foundry и настоящий Chromium; проверка в лицензированном Foundry выполняется по шагам выше. Совместимость заявлена для v12; v13 не проверялась.
 
 При наличии сохранённых источников можно обновить данные командой `python3 scripts/build-locations.py --references /path/to/references`. Источники карты и текстов, их хеши и правила сопоставления описаны в [docs/data-sources.md](docs/data-sources.md). Основные сценарии и дальнейшие функции — в [docs/features.md](docs/features.md), концепты интерфейса — в [docs/design.md](docs/design.md).
 
