@@ -1,0 +1,18 @@
+{
+  "id": "night-city-2045-atlas",
+  "title": "Night City 2045 — Атлас Мастера",
+  "description": "Интерактивная карта Найт-Сити для Мастера Cyberpunk RED: поиск, описания из вики, избранное и пользовательские метки.",
+  "version": "0.1.0",
+  "authors": [{ "name": "Defaulter444", "url": "https://github.com/Defaulter444" }],
+  "compatibility": { "minimum": "12", "verified": "12.331", "maximum": "12.999" },
+  "relationships": { "systems": [{ "id": "cyberpunk-red-core", "type": "system" }] },
+  "esmodules": ["scripts/main.js"],
+  "styles": ["styles/atlas.css"],
+  "url": "https://github.com/Defaulter444/CPR-Interface",
+  "manifest": "https://github.com/Defaulter444/CPR-Interface/releases/latest/download/module.json",
+  "download": "https://github.com/Defaulter444/CPR-Interface/releases/download/v0.1.0/night-city-2045-atlas-0.1.0.zip",
+  "readme": "https://github.com/Defaulter444/CPR-Interface/blob/main/README.md",
+  "bugs": "https://github.com/Defaulter444/CPR-Interface/issues",
+  "changelog": "https://github.com/Defaulter444/CPR-Interface/blob/main/CHANGELOG.md",
+  "license": "https://github.com/Defaulter444/CPR-Interface/blob/main/LICENSE"
+}

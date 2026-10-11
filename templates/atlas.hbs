@@ -1,0 +1,68 @@
+<section class="nc-atlas" aria-label="Атлас Найт-Сити 2045">
+  <header class="nc-atlas__header">
+    <div class="nc-atlas__identity">
+      <span class="nc-atlas__eyebrow">ИНТЕРФЕЙС МАСТЕРА · 2045</span>
+      <h1>NIGHT CITY <span>ATLAS</span></h1>
+    </div>
+    <div class="nc-atlas__summary" data-role="summary">Загрузка атласа…</div>
+  </header>
+
+  <div class="nc-atlas__layout">
+    <aside class="nc-atlas__catalogue" aria-label="Каталог локаций">
+      <div class="nc-atlas__filters">
+        <label class="nc-atlas__search-label" for="nc-atlas-search">Найти место</label>
+        <div class="nc-atlas__search-field">
+          <i class="fas fa-search" aria-hidden="true"></i>
+          <input id="nc-atlas-search" data-role="search" type="search" autocomplete="off" placeholder="Название, код или номер…">
+        </div>
+        <label class="nc-atlas__sr-only" for="nc-atlas-district">Район</label>
+        <select id="nc-atlas-district" data-role="district">
+          <option value="">Все районы</option>
+        </select>
+        <div class="nc-atlas__filter-toggles">
+          <label><input data-role="placed-only" type="checkbox"> На карте</label>
+          <label><input data-role="favorites-only" type="checkbox"> Избранное</label>
+        </div>
+      </div>
+      <div class="nc-atlas__list-heading"><span>ЛОКАЦИИ</span><span data-role="result-count">0</span></div>
+      <div class="nc-atlas__locations" data-role="locations" role="list" aria-label="Результаты поиска"></div>
+    </aside>
+
+    <section class="nc-atlas__map-panel" aria-label="Интерактивная карта города">
+      <div class="nc-atlas__map-toolbar">
+        <span class="nc-atlas__map-title"><span class="nc-atlas__live-dot" aria-hidden="true"></span> Найт-Сити · 2045</span>
+        <div class="nc-atlas__map-actions">
+          <button type="button" data-action="zoom-out" title="Уменьшить" aria-label="Уменьшить карту"><i class="fas fa-minus" aria-hidden="true"></i></button>
+          <output data-role="zoom" aria-label="Масштаб карты">100%</output>
+          <button type="button" data-action="zoom-in" title="Увеличить" aria-label="Увеличить карту"><i class="fas fa-plus" aria-hidden="true"></i></button>
+          <button type="button" data-action="fit" title="Показать весь город (F)" aria-label="Показать весь город"><i class="fas fa-expand" aria-hidden="true"></i></button>
+        </div>
+      </div>
+      <div class="nc-atlas__placement-banner" data-role="placement-banner" hidden>
+        <span>Щёлкните по карте, чтобы разместить выбранное место.</span>
+        <button type="button" data-action="cancel-placement">Отмена</button>
+      </div>
+      <div class="nc-atlas__viewport" data-role="viewport" tabindex="0" role="group" aria-label="Карта: перетаскивание для перемещения, колёсико для масштаба">
+        <div class="nc-atlas__stage" data-role="stage">
+          <img class="nc-atlas__map-image" data-role="map-image" alt="Карта Найт-Сити в 2045 году" draggable="false">
+          <div class="nc-atlas__markers" data-role="markers"></div>
+        </div>
+        <p class="nc-atlas__map-error" data-role="map-error" hidden>Изображение карты не загрузилось. Закройте и откройте атлас после проверки установки модуля.</p>
+      </div>
+      <div class="nc-atlas__map-caption"><span><i class="fas fa-location-dot" aria-hidden="true"></i> Метки карты</span><span class="nc-atlas__manual-legend">◆ Ваши метки</span></div>
+    </section>
+
+    <aside class="nc-atlas__detail" data-role="detail" aria-label="Описание выбранного места">
+      <div class="nc-atlas__empty-detail">
+        <span class="nc-atlas__empty-icon" aria-hidden="true">⌖</span>
+        <h2>Выберите место</h2>
+        <p>Щёлкните по метке или найдите локацию в каталоге, чтобы открыть описание из вики.</p>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="nc-atlas__footer">
+    <span data-role="status" role="status" aria-live="polite">Перетаскивайте карту · колёсико меняет масштаб</span>
+    <span class="nc-atlas__footer-badge">ТОЛЬКО ДЛЯ МАСТЕРА</span>
+  </footer>
+</section>

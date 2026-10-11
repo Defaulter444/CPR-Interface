@@ -1,0 +1,13 @@
+{
+  "name": "night-city-2045-atlas",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "test:browser": "python3 scripts/test-browser.py",
+    "check": "python3 scripts/check-package.py",
+    "build": "python3 scripts/build-release.py"
+  },
+  "devDependencies": { "handlebars": "4.7.8" }
+}

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Atlas behavioral test harness</title>
+  <link rel="stylesheet" href="../styles/atlas.css">
+  <style>
+    html, body { margin: 0; width: 100%; height: 100%; background: #10171d; }
+    .night-city-atlas-window, .window-content { width: 100%; height: 100%; }
+  </style>
+</head>
+<body>
+  <main class="night-city-atlas-window"><div class="window-content" id="host"></div></main>
+  <script src="/__vendor/handlebars.min.js"></script>
+  <script type="module">
+    import { AtlasMapController } from "../scripts/map-controller.js";
+
+    const [templateText, original] = await Promise.all([
+      fetch("../templates/atlas.hbs").then(response => response.text()),
+      fetch("../data/locations.json").then(response => response.json())
+    ]);
+    const template = Handlebars.compile(templateText);
+    const host = document.querySelector("#host");
+    const harness = window.harness = {
+      original,
+      dataset: structuredClone(original),
+      saved: { favorites: [], customPins: {} },
+      writes: { favorites: 0, customPins: 0 },
+      failures: { favorites: false, customPins: false },
+      notifications: [],
+      gm: true,
+      mount(dataset = this.dataset) {
+        this.controller?.destroy();
+        this.dataset = dataset;
+        host.innerHTML = template({});
+        this.root = host.querySelector(".nc-atlas");
+        this.controller = new AtlasMapController(this.root, dataset, {
+          assetBase: "../",
+          isGM: () => this.gm,
+          getFavorites: () => structuredClone(this.saved.favorites),
+          getCustomPins: () => structuredClone(this.saved.customPins),
+          saveFavorites: async value => {
+            this.writes.favorites += 1;
+            await Promise.resolve();
+            if (this.failures.favorites) throw new Error("Simulated setting write failure");
+            this.saved.favorites = structuredClone(value);
+          },
+          saveCustomPins: async value => {
+            this.writes.customPins += 1;
+            await Promise.resolve();
+            if (this.failures.customPins) throw new Error("Simulated setting write failure");
+            this.saved.customPins = structuredClone(value);
+          },
+          notify: message => this.notifications.push(message)
+        });
+        return this.controller.getState();
+      },
+      reset() {
+        this.saved = { favorites: [], customPins: {} };
+        this.writes = { favorites: 0, customPins: 0 };
+        this.failures = { favorites: false, customPins: false };
+        this.notifications = [];
+        this.gm = true;
+        return this.mount(structuredClone(this.original));
+      }
+    };
+    harness.mount();
+    window.harnessReady = true;
+  </script>
+</body>
+</html>
