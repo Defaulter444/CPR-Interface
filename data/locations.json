@@ -1,9 +1,11 @@
 {
   "schemaVersion": 1,
   "map": {
-    "path": "assets/night-city-2045.jpg",
+    "path": "assets/night-city-2045-streets.jpg",
     "width": 1200,
-    "height": 1855
+    "height": 1855,
+    "imageWidth": 2400,
+    "imageHeight": 3710
   },
   "stats": {
     "wikiCatalogLocations": 546,
@@ -21,9 +23,9 @@
   },
   "provenance": {
     "wikiUrl": "https://defaulter444.github.io/cyberpunk-wiki/",
-    "descriptionSource": "Full wiki sections; exact named-place paragraphs for T3/T10; full park article for W5.",
+    "descriptionSource": "Full wiki sections, with three explicitly recorded phrase corrections checked against Night City 2045 (2026); named-place paragraphs for T3/T10 and full park article for W5.",
     "coordinateConvention": "Normalized 0–1 coordinates, top-left origin.",
-    "coordinateMeaning": "Centers of printed official PDF map labels, not surveyed entrances or building footprints.",
+    "coordinateMeaning": "154 centers of Night City 2045 (2026) map labels projected onto the common basemap; 2 Atlas 2025 area references. These are map-label anchors, not surveyed entrances.",
     "numberingRule": "Official Atlas codes, original fan-map numbers and wiki section numbers are separate systems.",
     "sources": [
       {
@@ -43,7 +45,7 @@
         "sha256": "0baaa1accdedfa8fa79070554511ab8602a79350d81f59f3dc9c96f80a6fe8e4"
       },
       {
-        "role": "module_display",
+        "role": "legacy_module_display",
         "url": "https://avatars.mds.yandex.net/i?id=129f3e02b29cd5f285a7415298af5959_l-5317527-images-thumbs&n=13",
         "sha256": "6c0602bb6daac577da1df745db3792341b3d9e4d1e98efc421c28330dfc9a352"
       },
@@ -56,8 +58,59 @@
         "role": "marker_name_reference",
         "url": "https://rtalsoriangames.com/wp-content/uploads/2025/01/RTG-CPR-DLC-NightCityAtlasv1.01.pdf",
         "sha256": "85a672ea7890c5c80058b53966a8405e9cf166c69fcf70dd8ed6d8fe789b4cf6"
+      },
+      {
+        "role": "module_display",
+        "url": "https://rtalsoriangames.com/wp-content/uploads/2025/01/Night-City-2045-Atlas-Maps-1.01.zip",
+        "sha256": "d43f4c87eff232704e6f7ee12b0c70518098e269517b177b4fc5ebfd04171aa2",
+        "archiveEntry": "Night City 2045 Atlas Maps/Night City 2045 Atlas Street Names Only.jpg",
+        "sourceImageSHA256": "59f4319dd0b6abcef74cc4c8f18ea9a4b94410f338ba12326cf70243b4fccb32",
+        "rendering": "Lanczos resize from 6600x10200 to 2400x3710; JPEG quality92, subsampling0; logical coordinate space remains1200x1855."
       }
-    ]
+    ],
+    "bookReview": {
+      "title": "Night City 2045",
+      "edition": "First Printing, 2026",
+      "sha256": "eed591dc925f54b44c1a9389563dd4dfb02a5742cd38d4414b842aa51a18574f",
+      "pageConvention": "Printed page numbers; PDF page index is printed page + 1.",
+      "reviewDate": "2026-10-16",
+      "scope": "All 156 existing Atlas places matched by name against the book maps and descriptions. Source PDF and prose are not bundled.",
+      "coordinateMethod": "154 label capsule centers from 24 district maps, using original embedded map transforms and a shared geometric registration; 2 area references retain Atlas2025 coordinates.",
+      "registration": {
+        "newBaseOriginalSize": [
+          5175,
+          7966
+        ],
+        "registrationImageSize": [
+          1200,
+          1847
+        ],
+        "targetSize": [
+          1200,
+          1855
+        ],
+        "affine": [
+          [
+            1.0043416936859937,
+            3.8271476934328876e-05,
+            -0.12453812365886262
+          ],
+          [
+            -3.8271476934328876e-05,
+            1.0043416936859937,
+            0.005200543506097701
+          ]
+        ],
+        "matches": 1175,
+        "inliers": 1116,
+        "inlierErrorPercentiles": [
+          0.2208457961678505,
+          0.6516112089157104,
+          1.4968878448009384,
+          1.9906086921691895
+        ]
+      }
+    }
   },
   "locations": [
     {
@@ -80,15 +133,23 @@
       "mapMarkers": [
         {
           "code": "B1",
-          "x": 0.5165,
-          "y": 0.4241070261437908,
-          "kind": "official"
+          "x": 0.5187606750435996,
+          "y": 0.42434881898007343,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "B1",
       "sourcePageSha256": "af8a9d215973a7908d1a569b7528570ca899bb6f887e1b067447442ca7617db8",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "1",
+        "mapPage": 67,
+        "descriptionPage": 68,
+        "numberKey": "B1"
+      }
     },
     {
       "id": "wiki-location-f5236538449bc007ef9f",
@@ -183,15 +244,23 @@
       "mapMarkers": [
         {
           "code": "G1",
-          "x": 0.41713137626262625,
-          "y": 0.5463291666666666,
-          "kind": "official"
+          "x": 0.4169910313484362,
+          "y": 0.5465223789763233,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "G1",
       "sourcePageSha256": "899f254ee4fb2c16fc3db5905e724e7bd6422082d2c3c1e4e8cc8bc594ec859c",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "1",
+        "mapPage": 115,
+        "descriptionPage": 116,
+        "numberKey": "G1"
+      }
     },
     {
       "id": "wiki-location-dfac40e6a7056e299326",
@@ -288,15 +357,23 @@
       "mapMarkers": [
         {
           "code": "C1",
-          "x": 0.3292525252525253,
-          "y": 0.45327361111111114,
-          "kind": "official"
+          "x": 0.3266438494165585,
+          "y": 0.45291851083951545,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "C1",
       "sourcePageSha256": "0582e29255c4274762c218a57af89ffaabf940ab31092b966d24f3a4baee515d",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "1",
+        "mapPage": 81,
+        "descriptionPage": 80,
+        "numberKey": "C1"
+      }
     },
     {
       "id": "wiki-location-13e1eee8cabb83fbb8cb",
@@ -311,15 +388,23 @@
       "mapMarkers": [
         {
           "code": "T1",
-          "x": 0.762080744949495,
-          "y": 0.5011494281045751,
-          "kind": "official"
+          "x": 0.7624140841137733,
+          "y": 0.5000633665919505,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "T1",
       "sourcePageSha256": "ae87004cd89dbb8bcec65098ce2786f58f80a0aaf7e8ef407a3ba7904bd2f5b4",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "1",
+        "mapPage": 247,
+        "descriptionPage": 246,
+        "numberKey": "T1"
+      }
     },
     {
       "id": "wiki-location-45be312d942224c95eb4",
@@ -366,15 +451,23 @@
       "mapMarkers": [
         {
           "code": "G2",
-          "x": 0.46170208333333335,
-          "y": 0.5122605392156864,
-          "kind": "official"
+          "x": 0.4606220390352406,
+          "y": 0.5129132358684146,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "G3",
       "sourcePageSha256": "899f254ee4fb2c16fc3db5905e724e7bd6422082d2c3c1e4e8cc8bc594ec859c",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "3",
+        "mapPage": 115,
+        "descriptionPage": 116,
+        "numberKey": "G3"
+      }
     },
     {
       "id": "wiki-location-ecf0f08d2ed8ae1e87c5",
@@ -407,15 +500,23 @@
       "mapMarkers": [
         {
           "code": "X1",
-          "x": 0.4005909090909091,
-          "y": 0.732195179738562,
-          "kind": "official"
+          "x": 0.3986937781223661,
+          "y": 0.7320603512004666,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "X2",
       "sourcePageSha256": "a0396093acfe158911d836c49e98c23fb3e0fb0f83fd8df5535c60544249aaf2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "2",
+        "mapPage": 287,
+        "descriptionPage": 288,
+        "numberKey": "X2"
+      }
     },
     {
       "id": "wiki-location-8a0c8565ebb0910c62cb",
@@ -435,15 +536,23 @@
       "mapMarkers": [
         {
           "code": "V1",
-          "x": 0.7690251893939394,
-          "y": 0.6661821078431373,
-          "kind": "official"
+          "x": 0.7672029174506221,
+          "y": 0.6667028628032675,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "V2",
       "sourcePageSha256": "6b018a4a8ab77385164a05ddfed969f5687828cebc0a8e65095ec9cd37813a7a",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "2",
+        "mapPage": 265,
+        "descriptionPage": 266,
+        "numberKey": "V2"
+      }
     },
     {
       "id": "wiki-location-59091a1056eb99455b0f",
@@ -604,15 +713,23 @@
       "mapMarkers": [
         {
           "code": "Q1",
-          "x": 0.6870808712121212,
-          "y": 0.39248929738562094,
-          "kind": "official"
+          "x": 0.6835876726937447,
+          "y": 0.3946630059044304,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "Q2",
       "sourcePageSha256": "337c3902b1f8f8e018c31877cccb9d9b5140d95dc9491f26a1696aa4f729c2a8",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "2",
+        "mapPage": 225,
+        "descriptionPage": 224,
+        "numberKey": "Q2"
+      }
     },
     {
       "id": "wiki-location-c3095a7b12596ff3f055",
@@ -675,15 +792,24 @@
       "mapMarkers": [
         {
           "code": "T2",
-          "x": 0.6913736742424242,
-          "y": 0.5526200163398692,
-          "kind": "official"
+          "x": 0.6913159204350533,
+          "y": 0.5541931912237876,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "T3",
       "sourcePageSha256": "ae87004cd89dbb8bcec65098ce2786f58f80a0aaf7e8ef407a3ba7904bd2f5b4",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "3",
+        "mapPage": 247,
+        "descriptionPage": 248,
+        "numberKey": "T3",
+        "note": "В легенде указана с. 247; здесь приведена фактическая страница описания."
+      }
     },
     {
       "id": "wiki-location-d9ef478b90104a18eecc",
@@ -748,15 +874,23 @@
       "mapMarkers": [
         {
           "code": "D1",
-          "x": 0.5202879419191919,
-          "y": 0.4603814542483661,
-          "kind": "official"
+          "x": 0.5185273147681361,
+          "y": 0.4586873547482996,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "D1",
       "sourcePageSha256": "cd49325d6ab9d0692fc4550193c3027dc352b1772aa1845dbb915339e27dc46e",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "1",
+        "mapPage": 91,
+        "descriptionPage": 92,
+        "numberKey": "D1"
+      }
     },
     {
       "id": "wiki-location-b4d98a60d343439caaf8",
@@ -837,15 +971,23 @@
       "mapMarkers": [
         {
           "code": "G3",
-          "x": 0.4034950126262626,
-          "y": 0.5060513888888889,
-          "kind": "official"
+          "x": 0.4028755991518989,
+          "y": 0.5059637921042169,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "G5",
       "sourcePageSha256": "899f254ee4fb2c16fc3db5905e724e7bd6422082d2c3c1e4e8cc8bc594ec859c",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "5",
+        "mapPage": 115,
+        "descriptionPage": 117,
+        "numberKey": "G5"
+      }
     },
     {
       "id": "wiki-location-6fdf381d95bc308cc2dd",
@@ -860,15 +1002,23 @@
       "mapMarkers": [
         {
           "code": "Q2",
-          "x": 0.69086875,
-          "y": 0.38268537581699347,
-          "kind": "official"
+          "x": 0.6894867490386968,
+          "y": 0.3806769037361495,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "Q3",
       "sourcePageSha256": "337c3902b1f8f8e018c31877cccb9d9b5140d95dc9491f26a1696aa4f729c2a8",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "3",
+        "mapPage": 225,
+        "descriptionPage": 226,
+        "numberKey": "Q3"
+      }
     },
     {
       "id": "wiki-location-6f4d8615bca7f76020e0",
@@ -963,15 +1113,23 @@
       "mapMarkers": [
         {
           "code": "F1",
-          "x": 0.39995965909090914,
-          "y": 0.48595334967320264,
-          "kind": "official"
+          "x": 0.398992843938942,
+          "y": 0.4854154218696596,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "F3",
       "sourcePageSha256": "87e4c47ecba520deb018643f68ff502ce444a5c61626b9da4dd817494dad2963",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "3",
+        "mapPage": 105,
+        "descriptionPage": 106,
+        "numberKey": "F3"
+      }
     },
     {
       "id": "wiki-location-7cdd23a9b6982dddc61e",
@@ -986,15 +1144,23 @@
       "mapMarkers": [
         {
           "code": "F2",
-          "x": 0.3889748106060606,
-          "y": 0.4786004084967321,
-          "kind": "official"
+          "x": 0.3883523748658722,
+          "y": 0.47908390692647845,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "F4",
       "sourcePageSha256": "87e4c47ecba520deb018643f68ff502ce444a5c61626b9da4dd817494dad2963",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "4",
+        "mapPage": 105,
+        "descriptionPage": 106,
+        "numberKey": "F4"
+      }
     },
     {
       "id": "wiki-location-929b0086521fcfb6896e",
@@ -1027,15 +1193,23 @@
       "mapMarkers": [
         {
           "code": "W1",
-          "x": 0.41069198232323234,
-          "y": 0.6504958333333333,
-          "kind": "official"
+          "x": 0.4106471691122799,
+          "y": 0.6504372707344289,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "W2",
       "sourcePageSha256": "d39e735632d1c5ff39c50afa83eba72b408e846e643acb4fb3d3327dd9e423d1",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "2",
+        "mapPage": 277,
+        "descriptionPage": 278,
+        "numberKey": "W2"
+      }
     },
     {
       "id": "wiki-location-60869193aa8c8263c202",
@@ -1074,7 +1248,7 @@
       "name": "Blue Air Studio Apartments",
       "district": "Северный Хейвуд",
       "districtLetter": "T",
-      "description": "Код безопасности 4: Шестая улица, усиленный лёгкий\n\nЭтот кусочек недвижимости на самом краю города начинался как безымянный мотель, выкрашенный в небесно-голубой. В 2030-х смекалистый владелец увидел возможность и превратил дешёвые почасовые номера в долгосрочное жильё.\n\nУ места своё обаяние: смесь придорожной мотельной атмосферы старой школы и залатанного, обжитого вида, который даётся только десятилетиями самодельного ремонта Красного времени. В каждом номере есть базовое: кухонька, бывшая мини-баром, кровать явно из мотельных времён и окна с видом на дорогу. А если повезёт, на тумбочке будет стоять винтажная безвкусная неоновая лампа-кактус.\n\nЖильцы здесь в основном кочевники — из тех, у кого долгосрочные контракты в городе и кто, может быть, подумывает бросить бродячую жизнь… или кому просто нужно место подальше от родни в лагере Альдекальдо.",
+      "description": "Код безопасности 4: Шестая улица, усиленный лёгкий\n\nЭтот кусочек недвижимости на самом краю города начинался как безымянный мотель, выкрашенный в небесно-голубой. В 2030-х смекалистый владелец увидел возможность и превратил дешёвые номера с оплатой за ночь в долгосрочное жильё.\n\nУ места своё обаяние: смесь придорожной мотельной атмосферы старой школы и залатанного, обжитого вида, который даётся только десятилетиями самодельного ремонта Красного времени. В каждом номере есть базовое: кухонька, бывшая мини-баром, кровать явно из мотельных времён и окна с видом на дорогу. А если повезёт, на тумбочке будет стоять винтажная безвкусная неоновая лампа-кактус.\n\nЖильцы здесь в основном кочевники — из тех, у кого долгосрочные контракты в городе и кто, может быть, подумывает бросить бродячую жизнь… или кому просто нужно место подальше от родни в лагере Альдекальдо.",
       "sourceUrl": "https://defaulter444.github.io/cyberpunk-wiki/nait-siti/raiony/materik/severnyi-heivud.html#4-blue-air-studio-apartments",
       "sourceCitation": "NC2045, с. 245–254",
       "aliases": [
@@ -1084,15 +1258,31 @@
       "mapMarkers": [
         {
           "code": "T4",
-          "x": 0.8420049873737374,
-          "y": 0.5347278594771242,
-          "kind": "official"
+          "x": 0.8425345388698363,
+          "y": 0.5339107412148052,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "T4",
       "sourcePageSha256": "ae87004cd89dbb8bcec65098ce2786f58f80a0aaf7e8ef407a3ba7904bd2f5b4",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "4",
+        "mapPage": 247,
+        "descriptionPage": 248,
+        "numberKey": "T4",
+        "note": "В легенде указана с. 247; здесь приведена фактическая страница описания."
+      },
+      "descriptionCorrections": [
+        {
+          "from": "дешёвые почасовые номера",
+          "to": "дешёвые номера с оплатой за ночь",
+          "sourcePage": 248
+        }
+      ]
     },
     {
       "id": "wiki-location-8a01f08f1b45557a9564",
@@ -1139,15 +1329,23 @@
       "mapMarkers": [
         {
           "code": "I1",
-          "x": 0.3757172348484848,
-          "y": 0.5066233660130719,
-          "kind": "official"
+          "x": 0.37579072297078314,
+          "y": 0.5095794591118792,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "I1",
       "sourcePageSha256": "a0a7f63857f0d29335f833320fa82feb4bab7c4c2f7fb6a546783242a59156fa",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "1",
+        "mapPage": 139,
+        "descriptionPage": 140,
+        "numberKey": "I1"
+      }
     },
     {
       "id": "wiki-location-6ac6c2d39ff0de542bb3",
@@ -1194,15 +1392,23 @@
       "mapMarkers": [
         {
           "code": "E1",
-          "x": 0.6452878787878789,
-          "y": 0.46683570261437907,
-          "kind": "official"
+          "x": 0.6452144067543611,
+          "y": 0.46530721054118757,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "E1",
       "sourcePageSha256": "cf6d0294b01cf6bbcbca37914541435efff38a2793bb2201622f7ea6759366dc",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "1",
+        "mapPage": 97,
+        "descriptionPage": 98,
+        "numberKey": "E1"
+      }
     },
     {
       "id": "wiki-location-1d26d3daa7296da15582",
@@ -1267,15 +1473,23 @@
       "mapMarkers": [
         {
           "code": "B2",
-          "x": 0.4457929292929293,
-          "y": 0.4071951797385621,
-          "kind": "official"
+          "x": 0.4487255055402937,
+          "y": 0.40732764110844716,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "B6",
       "sourcePageSha256": "af8a9d215973a7908d1a569b7528570ca899bb6f887e1b067447442ca7617db8",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "6",
+        "mapPage": 67,
+        "descriptionPage": 69,
+        "numberKey": "B6"
+      }
     },
     {
       "id": "wiki-location-59226b5e1267d627e3e8",
@@ -1345,15 +1559,23 @@
       "mapMarkers": [
         {
           "code": "A1",
-          "x": 0.3596452651515151,
-          "y": 0.3986167483660131,
-          "kind": "official"
+          "x": 0.3597987314646778,
+          "y": 0.4000774527626392,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "A4",
       "sourcePageSha256": "21195cdabda8132220245ee4d01947e5b3f7a2706ed663b153f1dbf82bff34d2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "4",
+        "mapPage": 55,
+        "descriptionPage": 57,
+        "numberKey": "A4"
+      }
     },
     {
       "id": "wiki-location-e079bf7dc8ae65522146",
@@ -1400,15 +1622,23 @@
       "mapMarkers": [
         {
           "code": "P1",
-          "x": 0.7147323232323232,
-          "y": 0.4758226307189542,
-          "kind": "official"
+          "x": 0.7165808798687888,
+          "y": 0.4762442680089615,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "P3",
       "sourcePageSha256": "409f6c413a1e8182ae786816136266416c59c596709e5c39d250a60269cc8ef6",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "3",
+        "mapPage": 213,
+        "descriptionPage": 214,
+        "numberKey": "P3"
+      }
     },
     {
       "id": "wiki-location-3cb513bbb3bebb3ebfda",
@@ -1473,15 +1703,23 @@
       "mapMarkers": [
         {
           "code": "P2",
-          "x": 0.6461717171717172,
-          "y": 0.3491886437908497,
-          "kind": "official"
+          "x": 0.6461025333689044,
+          "y": 0.351363212812719,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "P4",
       "sourcePageSha256": "409f6c413a1e8182ae786816136266416c59c596709e5c39d250a60269cc8ef6",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "4",
+        "mapPage": 213,
+        "descriptionPage": 214,
+        "numberKey": "P4"
+      }
     },
     {
       "id": "wiki-location-f22553fa1bb90845d5e4",
@@ -1514,15 +1752,23 @@
       "mapMarkers": [
         {
           "code": "A2",
-          "x": 0.3801364267676767,
-          "y": 0.44322459150326804,
-          "kind": "official"
+          "x": 0.38046628534536175,
+          "y": 0.44333644338483624,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "A5",
       "sourcePageSha256": "21195cdabda8132220245ee4d01947e5b3f7a2706ed663b153f1dbf82bff34d2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "5",
+        "mapPage": 55,
+        "descriptionPage": 57,
+        "numberKey": "A5"
+      }
     },
     {
       "id": "wiki-location-9c0b7e3f3a80bca9419c",
@@ -1537,15 +1783,23 @@
       "mapMarkers": [
         {
           "code": "E2",
-          "x": 0.5776111111111111,
-          "y": 0.48726053921568624,
-          "kind": "official"
+          "x": 0.5778804677558161,
+          "y": 0.48712385866699065,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "E2",
       "sourcePageSha256": "cf6d0294b01cf6bbcbca37914541435efff38a2793bb2201622f7ea6759366dc",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "2",
+        "mapPage": 97,
+        "descriptionPage": 98,
+        "numberKey": "E2"
+      }
     },
     {
       "id": "wiki-location-b604e19c048f577ec1e7",
@@ -1581,15 +1835,23 @@
       "mapMarkers": [
         {
           "code": "G4",
-          "x": 0.4306414772727272,
-          "y": 0.5583389705882352,
-          "kind": "official"
+          "x": 0.4306260216920452,
+          "y": 0.5595078829760133,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "G7",
       "sourcePageSha256": "899f254ee4fb2c16fc3db5905e724e7bd6422082d2c3c1e4e8cc8bc594ec859c",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "7",
+        "mapPage": 115,
+        "descriptionPage": 118,
+        "numberKey": "G7"
+      }
     },
     {
       "id": "wiki-location-c0f203a3958563235fb4",
@@ -1604,15 +1866,23 @@
       "mapMarkers": [
         {
           "code": "B3",
-          "x": 0.569530303030303,
-          "y": 0.44477687908496727,
-          "kind": "official"
+          "x": 0.5744387546964305,
+          "y": 0.4457138455828262,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "B7",
       "sourcePageSha256": "af8a9d215973a7908d1a569b7528570ca899bb6f887e1b067447442ca7617db8",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "7",
+        "mapPage": 67,
+        "descriptionPage": 69,
+        "numberKey": "B7"
+      }
     },
     {
       "id": "wiki-location-7b2b649e9334b37ecbb1",
@@ -1698,15 +1968,23 @@
       "mapMarkers": [
         {
           "code": "G6",
-          "x": 0.47723238636363635,
-          "y": 0.5094828431372549,
-          "kind": "official"
+          "x": 0.4763307422297326,
+          "y": 0.506822442892687,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "G8",
       "sourcePageSha256": "899f254ee4fb2c16fc3db5905e724e7bd6422082d2c3c1e4e8cc8bc594ec859c",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "8",
+        "mapPage": 115,
+        "descriptionPage": 118,
+        "numberKey": "G8"
+      }
     },
     {
       "id": "wiki-location-216b14a694cb28dda20a",
@@ -1883,15 +2161,23 @@
       "mapMarkers": [
         {
           "code": "C2",
-          "x": 0.32672727272727276,
-          "y": 0.4340742647058824,
-          "kind": "official"
+          "x": 0.3299186873555542,
+          "y": 0.4347786424771242,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "C5",
       "sourcePageSha256": "0582e29255c4274762c218a57af89ffaabf940ab31092b966d24f3a4baee515d",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "5",
+        "mapPage": 81,
+        "descriptionPage": 82,
+        "numberKey": "C5"
+      }
     },
     {
       "id": "wiki-location-bdbf1316532af032afbb",
@@ -1906,15 +2192,23 @@
       "mapMarkers": [
         {
           "code": "A3",
-          "x": 0.3494546085858586,
-          "y": 0.43366576797385625,
-          "kind": "official"
+          "x": 0.3492740542004514,
+          "y": 0.43263437280952727,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "A6",
       "sourcePageSha256": "21195cdabda8132220245ee4d01947e5b3f7a2706ed663b153f1dbf82bff34d2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "6",
+        "mapPage": 55,
+        "descriptionPage": 58,
+        "numberKey": "A6"
+      }
     },
     {
       "id": "wiki-location-cdba090db17957d52b7a",
@@ -1961,15 +2255,23 @@
       "mapMarkers": [
         {
           "code": "X2",
-          "x": 0.39932828282828287,
-          "y": 0.6913455065359476,
-          "kind": "official"
+          "x": 0.4004556829761501,
+          "y": 0.6909761910035712,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "X4",
       "sourcePageSha256": "a0396093acfe158911d836c49e98c23fb3e0fb0f83fd8df5535c60544249aaf2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "4",
+        "mapPage": 287,
+        "descriptionPage": 288,
+        "numberKey": "X4"
+      }
     },
     {
       "id": "wiki-location-d8ceaa1f23d9fdbc4d3a",
@@ -1984,15 +2286,23 @@
       "mapMarkers": [
         {
           "code": "C3",
-          "x": 0.3090505050505051,
-          "y": 0.4536821078431373,
-          "kind": "official"
+          "x": 0.30880140518439236,
+          "y": 0.4524227666928241,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "C7",
       "sourcePageSha256": "0582e29255c4274762c218a57af89ffaabf940ab31092b966d24f3a4baee515d",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "7",
+        "mapPage": 81,
+        "descriptionPage": 83,
+        "numberKey": "C7"
+      }
     },
     {
       "id": "wiki-location-fe6fbde3737e5c5469df",
@@ -2076,15 +2386,23 @@
       "mapMarkers": [
         {
           "code": "H1",
-          "x": 0.530767803030303,
-          "y": 0.5192049836601308,
-          "kind": "official"
+          "x": 0.5370523533193878,
+          "y": 0.512563257088173,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "H3",
       "sourcePageSha256": "58e3a78979120a87fa518fe675da641ec3815d27668db6ee2f735a16996c38c3",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "3",
+        "mapPage": 129,
+        "descriptionPage": 130,
+        "numberKey": "H3"
+      }
     },
     {
       "id": "wiki-location-912b3d478b407ae6e9ea",
@@ -2115,15 +2433,23 @@
       "mapMarkers": [
         {
           "code": "A4",
-          "x": 0.3915000631313131,
-          "y": 0.42606772875817,
-          "kind": "official"
+          "x": 0.39067645614921137,
+          "y": 0.42527880833127835,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "A7",
       "sourcePageSha256": "21195cdabda8132220245ee4d01947e5b3f7a2706ed663b153f1dbf82bff34d2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "7",
+        "mapPage": 55,
+        "descriptionPage": 58,
+        "numberKey": "A7"
+      }
     },
     {
       "id": "wiki-location-460206e5590832ad748f",
@@ -2138,15 +2464,23 @@
       "mapMarkers": [
         {
           "code": "W2",
-          "x": 0.3526111742424243,
-          "y": 0.6415089052287581,
-          "kind": "official"
+          "x": 0.3538147208938301,
+          "y": 0.6403849930851349,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "W3",
       "sourcePageSha256": "d39e735632d1c5ff39c50afa83eba72b408e846e643acb4fb3d3327dd9e423d1",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "3",
+        "mapPage": 277,
+        "descriptionPage": 278,
+        "numberKey": "W3"
+      }
     },
     {
       "id": "wiki-location-65b9263ddee57f9b4551",
@@ -2225,15 +2559,23 @@
       "mapMarkers": [
         {
           "code": "U1",
-          "x": 0.598570707070707,
-          "y": 0.611443545751634,
-          "kind": "official"
+          "x": 0.6003174482523865,
+          "y": 0.6119092395758348,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "U5",
       "sourcePageSha256": "dccd10fd9ec3d4b8d0979b8aff6cda134b99220e654ab724bf0b7e95eadfd1b5",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "5",
+        "mapPage": 257,
+        "descriptionPage": 258,
+        "numberKey": "U5"
+      }
     },
     {
       "id": "wiki-location-8691599cf9a3739d3331",
@@ -2248,15 +2590,23 @@
       "mapMarkers": [
         {
           "code": "A5",
-          "x": 0.2980657196969697,
-          "y": 0.41250563725490197,
-          "kind": "official"
+          "x": 0.298198691335084,
+          "y": 0.4137632657893603,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "A8",
       "sourcePageSha256": "21195cdabda8132220245ee4d01947e5b3f7a2706ed663b153f1dbf82bff34d2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "8",
+        "mapPage": 55,
+        "descriptionPage": 58,
+        "numberKey": "A8"
+      }
     },
     {
       "id": "wiki-location-14c1ba033547fed02b54",
@@ -2271,15 +2621,23 @@
       "mapMarkers": [
         {
           "code": "A6",
-          "x": 0.3056414772727273,
-          "y": 0.4165906045751634,
-          "kind": "official"
+          "x": 0.30571929682996046,
+          "y": 0.41668844689928414,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "A9",
       "sourcePageSha256": "21195cdabda8132220245ee4d01947e5b3f7a2706ed663b153f1dbf82bff34d2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "9",
+        "mapPage": 55,
+        "descriptionPage": 58,
+        "numberKey": "A9"
+      }
     },
     {
       "id": "wiki-location-7965b9d2460d193f46f5",
@@ -2326,15 +2684,23 @@
       "mapMarkers": [
         {
           "code": "C4",
-          "x": 0.31536363636363635,
-          "y": 0.47002197712418303,
-          "kind": "official"
+          "x": 0.3143803339816472,
+          "y": 0.46997599046360733,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "C8",
       "sourcePageSha256": "0582e29255c4274762c218a57af89ffaabf940ab31092b966d24f3a4baee515d",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "8",
+        "mapPage": 81,
+        "descriptionPage": 83,
+        "numberKey": "C8"
+      }
     },
     {
       "id": "wiki-location-5bf03ab4a03ea489a628",
@@ -2431,15 +2797,23 @@
       "mapMarkers": [
         {
           "code": "P3",
-          "x": 0.6221818181818182,
-          "y": 0.3165089052287582,
-          "kind": "official"
+          "x": 0.6221536995196771,
+          "y": 0.3169838176974574,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "P7",
       "sourcePageSha256": "409f6c413a1e8182ae786816136266416c59c596709e5c39d250a60269cc8ef6",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "7",
+        "mapPage": 213,
+        "descriptionPage": 215,
+        "numberKey": "P7"
+      }
     },
     {
       "id": "wiki-location-557ddf9e3186362c631f",
@@ -2502,15 +2876,23 @@
       "mapMarkers": [
         {
           "code": "J1",
-          "x": 0.2993282196969697,
-          "y": 0.5744338235294117,
-          "kind": "official"
+          "x": 0.3002297430181795,
+          "y": 0.5734050235805842,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "J2",
       "sourcePageSha256": "4d2067ecaff6b5064bb038213dbc4ff5d985121ffdfff9cfe72eb24d5c78ae37",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "2",
+        "mapPage": 151,
+        "descriptionPage": 152,
+        "numberKey": "J2"
+      }
     },
     {
       "id": "wiki-location-0aee190ddb5a25a76849",
@@ -2525,15 +2907,23 @@
       "mapMarkers": [
         {
           "code": "J2",
-          "x": 0.30437872474747474,
-          "y": 0.5801526960784313,
-          "kind": "official"
+          "x": 0.3036549614057852,
+          "y": 0.5792069150422359,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "J3",
       "sourcePageSha256": "4d2067ecaff6b5064bb038213dbc4ff5d985121ffdfff9cfe72eb24d5c78ae37",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "3",
+        "mapPage": 151,
+        "descriptionPage": 152,
+        "numberKey": "J3"
+      }
     },
     {
       "id": "wiki-location-2a8087932bd7e128ff94",
@@ -2548,15 +2938,23 @@
       "mapMarkers": [
         {
           "code": "J3",
-          "x": 0.30437872474747474,
-          "y": 0.5858716503267973,
-          "kind": "official"
+          "x": 0.3049185641242849,
+          "y": 0.5828561562609794,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "J4",
       "sourcePageSha256": "4d2067ecaff6b5064bb038213dbc4ff5d985121ffdfff9cfe72eb24d5c78ae37",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "4",
+        "mapPage": 151,
+        "descriptionPage": 152,
+        "numberKey": "J4"
+      }
     },
     {
       "id": "wiki-location-08fc3227b2d065fe4d0b",
@@ -2635,15 +3033,24 @@
       "mapMarkers": [
         {
           "code": "T5",
-          "x": 0.7334191287878788,
-          "y": 0.49714616013071905,
-          "kind": "official"
+          "x": 0.7335513623636716,
+          "y": 0.496201478492231,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "T6",
       "sourcePageSha256": "ae87004cd89dbb8bcec65098ce2786f58f80a0aaf7e8ef407a3ba7904bd2f5b4",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "6",
+        "mapPage": 247,
+        "descriptionPage": 249,
+        "numberKey": "T6",
+        "note": "В легенде указана с. 248; здесь приведена фактическая страница описания."
+      }
     },
     {
       "id": "wiki-location-a331cd01ca44e8f8de2e",
@@ -2658,15 +3065,23 @@
       "mapMarkers": [
         {
           "code": "X3",
-          "x": 0.4978131313131314,
-          "y": 0.6562147875816993,
-          "kind": "official"
+          "x": 0.49513901736248933,
+          "y": 0.6555958708586771,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "X7",
       "sourcePageSha256": "a0396093acfe158911d836c49e98c23fb3e0fb0f83fd8df5535c60544249aaf2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "7",
+        "mapPage": 287,
+        "descriptionPage": 289,
+        "numberKey": "X7"
+      }
     },
     {
       "id": "wiki-location-93f4434579df219bc1c1",
@@ -2697,15 +3112,23 @@
       "mapMarkers": [
         {
           "code": "V3",
-          "x": 0.7058938762626262,
-          "y": 0.6604631535947711,
-          "kind": "official"
+          "x": 0.7080362973548958,
+          "y": 0.6585651636073053,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "V8",
       "sourcePageSha256": "6b018a4a8ab77385164a05ddfed969f5687828cebc0a8e65095ec9cd37813a7a",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "8",
+        "mapPage": 265,
+        "descriptionPage": 268,
+        "numberKey": "V8"
+      }
     },
     {
       "id": "wiki-location-c2c21ab59abb2ac726b3",
@@ -2864,15 +3287,23 @@
       "mapMarkers": [
         {
           "code": "P4",
-          "x": 0.596929292929293,
-          "y": 0.3344827614379085,
-          "kind": "official"
+          "x": 0.5985314075070145,
+          "y": 0.33421008139126407,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "P8",
       "sourcePageSha256": "409f6c413a1e8182ae786816136266416c59c596709e5c39d250a60269cc8ef6",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "8",
+        "mapPage": 213,
+        "descriptionPage": 216,
+        "numberKey": "P8"
+      }
     },
     {
       "id": "wiki-location-2761e2a9809da2c5a329",
@@ -3001,15 +3432,23 @@
       "mapMarkers": [
         {
           "code": "A7",
-          "x": 0.3547576388888889,
-          "y": 0.41062663398692806,
-          "kind": "official"
+          "x": 0.35518875784251114,
+          "y": 0.4110762565933076,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "A11",
       "sourcePageSha256": "21195cdabda8132220245ee4d01947e5b3f7a2706ed663b153f1dbf82bff34d2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "11",
+        "mapPage": 55,
+        "descriptionPage": 59,
+        "numberKey": "A11"
+      }
     },
     {
       "id": "wiki-location-90dc280571a973a0983b",
@@ -3120,15 +3559,23 @@
       "mapMarkers": [
         {
           "code": "J4",
-          "x": 0.257661553030303,
-          "y": 0.5327671568627451,
-          "kind": "official"
+          "x": 0.23399986286880398,
+          "y": 0.5629148193277548,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "J5",
       "sourcePageSha256": "4d2067ecaff6b5064bb038213dbc4ff5d985121ffdfff9cfe72eb24d5c78ae37",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "5",
+        "mapPage": 151,
+        "descriptionPage": 152,
+        "numberKey": "J5"
+      }
     },
     {
       "id": "wiki-location-268601378a68a282a021",
@@ -3241,15 +3688,24 @@
       "mapMarkers": [
         {
           "code": "T6",
-          "x": 0.7334191287878788,
-          "y": 0.48815923202614386,
-          "kind": "official"
+          "x": 0.7410153003190012,
+          "y": 0.4878322989214323,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "T8",
       "sourcePageSha256": "ae87004cd89dbb8bcec65098ce2786f58f80a0aaf7e8ef407a3ba7904bd2f5b4",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "8",
+        "mapPage": 247,
+        "descriptionPage": 249,
+        "numberKey": "T8",
+        "note": "В легенде указана с. 248; здесь приведена фактическая страница описания."
+      }
     },
     {
       "id": "wiki-location-1d06280073e3a9927826",
@@ -3266,15 +3722,23 @@
       "mapMarkers": [
         {
           "code": "E3",
-          "x": 0.606651515151515,
-          "y": 0.4954304738562091,
-          "kind": "official"
+          "x": 0.5943400457182318,
+          "y": 0.5025063781280649,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "E3",
       "sourcePageSha256": "cf6d0294b01cf6bbcbca37914541435efff38a2793bb2201622f7ea6759366dc",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "3",
+        "mapPage": 97,
+        "descriptionPage": 98,
+        "numberKey": "E3"
+      }
     },
     {
       "id": "wiki-location-d2f11e03562066056527",
@@ -3353,15 +3817,23 @@
       "mapMarkers": [
         {
           "code": "L1",
-          "x": 0.5130910353535354,
-          "y": 0.5339108660130719,
-          "kind": "official"
+          "x": 0.5137536649948792,
+          "y": 0.5325324872117059,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "L7",
       "sourcePageSha256": "3767a8e31bdab2c7bc2532610b7024d8e2c02bc5a7cb0c0d4aabe661d58e38e7",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "7",
+        "mapPage": 167,
+        "descriptionPage": 169,
+        "numberKey": "L7"
+      }
     },
     {
       "id": "wiki-location-c54c5c2cfffc3e9e5e8c",
@@ -3408,15 +3880,23 @@
       "mapMarkers": [
         {
           "code": "B4",
-          "x": 0.545540404040404,
-          "y": 0.33284877450980394,
-          "kind": "official"
+          "x": 0.5458111862375808,
+          "y": 0.33327736658091595,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "B14",
       "sourcePageSha256": "af8a9d215973a7908d1a569b7528570ca899bb6f887e1b067447442ca7617db8",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "14",
+        "mapPage": 67,
+        "descriptionPage": 71,
+        "numberKey": "B14"
+      }
     },
     {
       "id": "wiki-location-c289219cdc190a4a3603",
@@ -3479,15 +3959,23 @@
       "mapMarkers": [
         {
           "code": "G7",
-          "x": 0.388848547979798,
-          "y": 0.5372606209150327,
-          "kind": "official"
+          "x": 0.38915378064026995,
+          "y": 0.5367409481314426,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "G14",
       "sourcePageSha256": "899f254ee4fb2c16fc3db5905e724e7bd6422082d2c3c1e4e8cc8bc594ec859c",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "14",
+        "mapPage": 115,
+        "descriptionPage": 120,
+        "numberKey": "G14"
+      }
     },
     {
       "id": "wiki-location-b2d4c3c8a80bde6aac4e",
@@ -3550,15 +4038,23 @@
       "mapMarkers": [
         {
           "code": "B5",
-          "x": 0.5771060606060606,
-          "y": 0.4292540032679738,
-          "kind": "official"
+          "x": 0.5769315335424471,
+          "y": 0.4295514307636523,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "B15",
       "sourcePageSha256": "af8a9d215973a7908d1a569b7528570ca899bb6f887e1b067447442ca7617db8",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "15",
+        "mapPage": 67,
+        "descriptionPage": 71,
+        "numberKey": "B15"
+      }
     },
     {
       "id": "wiki-location-4645cb933cfbf51bc278",
@@ -3669,15 +4165,23 @@
       "mapMarkers": [
         {
           "code": "S1",
-          "x": 0.6553888888888889,
-          "y": 0.546084068627451,
-          "kind": "official"
+          "x": 0.6531185179700886,
+          "y": 0.5442933416946001,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "S4",
       "sourcePageSha256": "9e2f876ca6fdbe5db0680d995be19f205b07b56919186916cff1f66484ffa8ed",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "4",
+        "mapPage": 241,
+        "descriptionPage": 242,
+        "numberKey": "S4"
+      }
     },
     {
       "id": "wiki-location-7f71a317fbbf48f2d177",
@@ -3694,15 +4198,23 @@
       "mapMarkers": [
         {
           "code": "A8",
-          "x": 0.4255909722222222,
-          "y": 0.4129958333333333,
-          "kind": "official"
+          "x": 0.4243959923632003,
+          "y": 0.40686096542375133,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "A12",
       "sourcePageSha256": "21195cdabda8132220245ee4d01947e5b3f7a2706ed663b153f1dbf82bff34d2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "12",
+        "mapPage": 55,
+        "descriptionPage": 59,
+        "numberKey": "A12"
+      }
     },
     {
       "id": "wiki-location-609b01d368685500c929",
@@ -3829,15 +4341,23 @@
       "mapMarkers": [
         {
           "code": "E4",
-          "x": 0.6091767676767676,
-          "y": 0.461116748366013,
-          "kind": "official"
+          "x": 0.6098636702415619,
+          "y": 0.4611699272645953,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "E4",
       "sourcePageSha256": "cf6d0294b01cf6bbcbca37914541435efff38a2793bb2201622f7ea6759366dc",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "4",
+        "mapPage": 97,
+        "descriptionPage": 98,
+        "numberKey": "E4"
+      }
     },
     {
       "id": "wiki-location-800d41db97c944086119",
@@ -3873,15 +4393,23 @@
       "mapMarkers": [
         {
           "code": "G8",
-          "x": 0.45450511363636364,
-          "y": 0.5568684640522875,
-          "kind": "official"
+          "x": 0.45529389763004685,
+          "y": 0.5566664286512336,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "G15",
       "sourcePageSha256": "899f254ee4fb2c16fc3db5905e724e7bd6422082d2c3c1e4e8cc8bc594ec859c",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "15",
+        "mapPage": 115,
+        "descriptionPage": 121,
+        "numberKey": "G15"
+      }
     },
     {
       "id": "wiki-location-d770a1d8314e044fb67d",
@@ -4042,15 +4570,23 @@
       "mapMarkers": [
         {
           "code": "K1",
-          "x": 0.3738232954545454,
-          "y": 0.5727998366013072,
-          "kind": "official"
+          "x": 0.37153082286349653,
+          "y": 0.571258489922704,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "K9",
       "sourcePageSha256": "50f22bc0f38dbaed70aa95579b77106904836d31690aa2b9847c8e7dd602697a",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "9",
+        "mapPage": 159,
+        "descriptionPage": 161,
+        "numberKey": "K9"
+      }
     },
     {
       "id": "wiki-location-2a4f4f54969936a25b16",
@@ -4065,15 +4601,23 @@
       "mapMarkers": [
         {
           "code": "V4",
-          "x": 0.6629645833333333,
-          "y": 0.6310513888888889,
-          "kind": "official"
+          "x": 0.6619416918575646,
+          "y": 0.6310603802873475,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "V9",
       "sourcePageSha256": "6b018a4a8ab77385164a05ddfed969f5687828cebc0a8e65095ec9cd37813a7a",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "9",
+        "mapPage": 265,
+        "descriptionPage": 268,
+        "numberKey": "V9"
+      }
     },
     {
       "id": "wiki-location-b9e45629f6a88e85dbdd",
@@ -4111,15 +4655,23 @@
       "mapMarkers": [
         {
           "code": "H2",
-          "x": 0.5370809343434344,
-          "y": 0.491427205882353,
-          "kind": "official"
+          "x": 0.5331551561165222,
+          "y": 0.490745623025134,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "H8",
       "sourcePageSha256": "58e3a78979120a87fa518fe675da641ec3815d27668db6ee2f735a16996c38c3",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "8",
+        "mapPage": 129,
+        "descriptionPage": 131,
+        "numberKey": "H8"
+      }
     },
     {
       "id": "wiki-location-0c199849cc41e40e04e8",
@@ -4203,15 +4755,23 @@
       "mapMarkers": [
         {
           "code": "A9",
-          "x": 0.33215662878787877,
-          "y": 0.41250563725490197,
-          "kind": "official"
+          "x": 0.3307143765878615,
+          "y": 0.41215812910453564,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "A13",
       "sourcePageSha256": "21195cdabda8132220245ee4d01947e5b3f7a2706ed663b153f1dbf82bff34d2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "13",
+        "mapPage": 55,
+        "descriptionPage": 59,
+        "numberKey": "A13"
+      }
     },
     {
       "id": "wiki-location-aa58fe8e04918d92f1dc",
@@ -4228,15 +4788,23 @@
       "mapMarkers": [
         {
           "code": "H3",
-          "x": 0.5459193181818183,
-          "y": 0.5143030228758171,
-          "kind": "official"
+          "x": 0.5449268408996651,
+          "y": 0.5134460552802739,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "H9",
       "sourcePageSha256": "58e3a78979120a87fa518fe675da641ec3815d27668db6ee2f735a16996c38c3",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "9",
+        "mapPage": 129,
+        "descriptionPage": 131,
+        "numberKey": "H9"
+      }
     },
     {
       "id": "wiki-location-40a1a35ba5bfcd2d1c4e",
@@ -4315,15 +4883,23 @@
       "mapMarkers": [
         {
           "code": "N2",
-          "x": 0.463469696969697,
-          "y": 0.1890579248366013,
-          "kind": "official"
+          "x": 0.4702621225425766,
+          "y": 0.1862871173235712,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "N10",
       "sourcePageSha256": "717ee65653b9b5d1b07024e4b48c81683d4d23277ee4e292fbf44c74d3f329b2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "10",
+        "mapPage": 187,
+        "descriptionPage": 189,
+        "numberKey": "N10"
+      }
     },
     {
       "id": "wiki-location-f3d6002a867eb72adb7f",
@@ -4484,15 +5060,23 @@
       "mapMarkers": [
         {
           "code": "L3",
-          "x": 0.5484445707070708,
-          "y": 0.5420808006535949,
-          "kind": "official"
+          "x": 0.5490903084749162,
+          "y": 0.5403082546514165,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "L8",
       "sourcePageSha256": "3767a8e31bdab2c7bc2532610b7024d8e2c02bc5a7cb0c0d4aabe661d58e38e7",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "8",
+        "mapPage": 167,
+        "descriptionPage": 169,
+        "numberKey": "L8"
+      }
     },
     {
       "id": "wiki-location-565021c20d0dcdfa3319",
@@ -4541,15 +5125,23 @@
       "mapMarkers": [
         {
           "code": "X4",
-          "x": 0.5571565656565657,
-          "y": 0.6741886437908496,
-          "kind": "official"
+          "x": 0.5568914134237253,
+          "y": 0.6734736016611511,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "X10",
       "sourcePageSha256": "a0396093acfe158911d836c49e98c23fb3e0fb0f83fd8df5535c60544249aaf2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "10",
+        "mapPage": 287,
+        "descriptionPage": 289,
+        "numberKey": "X10"
+      }
     },
     {
       "id": "wiki-location-ad3fb88ece04e69c0c7f",
@@ -4620,15 +5212,23 @@
       "mapMarkers": [
         {
           "code": "L2",
-          "x": 0.4891011363636364,
-          "y": 0.5821134803921569,
-          "kind": "official"
+          "x": 0.49002186457708335,
+          "y": 0.5819702699587845,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "L9",
       "sourcePageSha256": "3767a8e31bdab2c7bc2532610b7024d8e2c02bc5a7cb0c0d4aabe661d58e38e7",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "9",
+        "mapPage": 167,
+        "descriptionPage": 169,
+        "numberKey": "L9"
+      }
     },
     {
       "id": "wiki-location-bacc7bb1ee6fce4fba1d",
@@ -4661,15 +5261,23 @@
       "mapMarkers": [
         {
           "code": "N3",
-          "x": 0.4957929292929293,
-          "y": 0.2683062908496732,
-          "kind": "official"
+          "x": 0.4992523736974165,
+          "y": 0.2656969095112873,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "N12",
       "sourcePageSha256": "717ee65653b9b5d1b07024e4b48c81683d4d23277ee4e292fbf44c74d3f329b2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "12",
+        "mapPage": 187,
+        "descriptionPage": 190,
+        "numberKey": "N12"
+      }
     },
     {
       "id": "wiki-location-bffb0dfa5e4d70941610",
@@ -4766,15 +5374,23 @@
       "mapMarkers": [
         {
           "code": "G9",
-          "x": 0.4090505681818182,
-          "y": 0.537505637254902,
-          "kind": "official"
+          "x": 0.40854642306222766,
+          "y": 0.5363008813032576,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "G16",
       "sourcePageSha256": "899f254ee4fb2c16fc3db5905e724e7bd6422082d2c3c1e4e8cc8bc594ec859c",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "16",
+        "mapPage": 115,
+        "descriptionPage": 121,
+        "numberKey": "G16"
+      }
     },
     {
       "id": "wiki-location-343e84ca3254fac31b7a",
@@ -4903,15 +5519,23 @@
       "mapMarkers": [
         {
           "code": "Q3",
-          "x": 0.6946566287878788,
-          "y": 0.4129141339869281,
-          "kind": "official"
+          "x": 0.6958198460093103,
+          "y": 0.4136214384604591,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "Q13",
       "sourcePageSha256": "337c3902b1f8f8e018c31877cccb9d9b5140d95dc9491f26a1696aa4f729c2a8",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "13",
+        "mapPage": 225,
+        "descriptionPage": 228,
+        "numberKey": "Q13"
+      }
     },
     {
       "id": "wiki-location-48f3c4c4b7a1ca5f230f",
@@ -5200,15 +5824,23 @@
       "mapMarkers": [
         {
           "code": "B6",
-          "x": 0.5893535353535354,
-          "y": 0.4274566176470587,
-          "kind": "official"
+          "x": 0.5886802708854587,
+          "y": 0.4275263803074917,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "B21",
       "sourcePageSha256": "af8a9d215973a7908d1a569b7528570ca899bb6f887e1b067447442ca7617db8",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "21",
+        "mapPage": 67,
+        "descriptionPage": 72,
+        "numberKey": "B21"
+      }
     },
     {
       "id": "wiki-location-f049381a256640c5ed2d",
@@ -5335,15 +5967,23 @@
       "mapMarkers": [
         {
           "code": "B7",
-          "x": 0.4580404040404041,
-          "y": 0.3906919117647059,
-          "kind": "official"
+          "x": 0.4586996875407289,
+          "y": 0.392197196331482,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "B23",
       "sourcePageSha256": "af8a9d215973a7908d1a569b7528570ca899bb6f887e1b067447442ca7617db8",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "23",
+        "mapPage": 67,
+        "descriptionPage": 73,
+        "numberKey": "B23"
+      }
     },
     {
       "id": "wiki-location-5f8641a3751de0077457",
@@ -5376,15 +6016,23 @@
       "mapMarkers": [
         {
           "code": "V5",
-          "x": 0.6705403409090909,
-          "y": 0.7004958333333333,
-          "kind": "official"
+          "x": 0.6708408777908894,
+          "y": 0.699288393347581,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "V12",
       "sourcePageSha256": "6b018a4a8ab77385164a05ddfed969f5687828cebc0a8e65095ec9cd37813a7a",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "12",
+        "mapPage": 265,
+        "descriptionPage": 268,
+        "numberKey": "V12"
+      }
     },
     {
       "id": "wiki-location-55bffe3b02f8f0f073af",
@@ -5431,15 +6079,23 @@
       "mapMarkers": [
         {
           "code": "B8",
-          "x": 0.5110707070707071,
-          "y": 0.4013128267973856,
-          "kind": "official"
+          "x": 0.5097442597040178,
+          "y": 0.4015671662454124,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "B24",
       "sourcePageSha256": "af8a9d215973a7908d1a569b7528570ca899bb6f887e1b067447442ca7617db8",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "24",
+        "mapPage": 67,
+        "descriptionPage": 73,
+        "numberKey": "B24"
+      }
     },
     {
       "id": "wiki-location-ea95565f7717fc1d1ff4",
@@ -5461,15 +6117,23 @@
       "mapMarkers": [
         {
           "code": "B9",
-          "x": 0.4870808080808081,
-          "y": 0.4062147875816994,
-          "kind": "official"
+          "x": 0.48585016855120283,
+          "y": 0.4052566353160023,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "B25",
       "sourcePageSha256": "af8a9d215973a7908d1a569b7528570ca899bb6f887e1b067447442ca7617db8",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "25",
+        "mapPage": 67,
+        "descriptionPage": 73,
+        "numberKey": "B25"
+      }
     },
     {
       "id": "wiki-location-422829087cc7beda4233",
@@ -5521,15 +6185,23 @@
       "mapMarkers": [
         {
           "code": "J5",
-          "x": 0.2955403409090909,
-          "y": 0.5384861111111111,
-          "kind": "official"
+          "x": 0.29560604454365014,
+          "y": 0.538398313380577,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "J9",
       "sourcePageSha256": "4d2067ecaff6b5064bb038213dbc4ff5d985121ffdfff9cfe72eb24d5c78ae37",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "9",
+        "mapPage": 151,
+        "descriptionPage": 154,
+        "numberKey": "J9"
+      }
     },
     {
       "id": "wiki-location-5e664646bd437b60b63d",
@@ -5679,15 +6351,23 @@
       "mapMarkers": [
         {
           "code": "G10",
-          "x": 0.44629804292929287,
-          "y": 0.5449402777777779,
-          "kind": "official"
+          "x": 0.4450807616237027,
+          "y": 0.5436947879306581,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "G19",
       "sourcePageSha256": "899f254ee4fb2c16fc3db5905e724e7bd6422082d2c3c1e4e8cc8bc594ec859c",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "19",
+        "mapPage": 115,
+        "descriptionPage": 122,
+        "numberKey": "G19"
+      }
     },
     {
       "id": "wiki-location-28735f842e533a5e36b2",
@@ -5773,15 +6453,23 @@
       "mapMarkers": [
         {
           "code": "V6",
-          "x": 0.44364652777777785,
-          "y": 0.636035049019608,
-          "kind": "official"
+          "x": 0.45088480125141983,
+          "y": 0.6383888043213681,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "V14",
       "sourcePageSha256": "6b018a4a8ab77385164a05ddfed969f5687828cebc0a8e65095ec9cd37813a7a",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "14",
+        "mapPage": 265,
+        "descriptionPage": 269,
+        "numberKey": "V14"
+      }
     },
     {
       "id": "wiki-location-67bc509ecc5b10406d72",
@@ -5846,15 +6534,23 @@
       "mapMarkers": [
         {
           "code": "M1",
-          "x": 0.4432677398989899,
-          "y": 0.26340433006535946,
-          "kind": "official"
+          "x": 0.4418348935387442,
+          "y": 0.2634934071630339,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "M8",
       "sourcePageSha256": "b42b1dcbd4d54856a73de94650706b19c49e6aa46888e70dab348e4a1e04a82d",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "8",
+        "mapPage": 179,
+        "descriptionPage": 182,
+        "numberKey": "M8"
+      }
     },
     {
       "id": "wiki-location-afd3e4d62348aaef7864",
@@ -5885,15 +6581,23 @@
       "mapMarkers": [
         {
           "code": "M2",
-          "x": 0.3927626893939394,
-          "y": 0.2699402777777778,
-          "kind": "official"
+          "x": 0.3922100310435191,
+          "y": 0.2686650588316536,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "M9",
       "sourcePageSha256": "b42b1dcbd4d54856a73de94650706b19c49e6aa46888e70dab348e4a1e04a82d",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "9",
+        "mapPage": 179,
+        "descriptionPage": 182,
+        "numberKey": "M9"
+      }
     },
     {
       "id": "wiki-location-2ffd9b1b5a00ca4226fd",
@@ -5908,15 +6612,23 @@
       "mapMarkers": [
         {
           "code": "I2",
-          "x": 0.3600606691919192,
-          "y": 0.504172385620915,
-          "kind": "official"
+          "x": 0.36038444014130516,
+          "y": 0.503310736579508,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "I10",
       "sourcePageSha256": "a0a7f63857f0d29335f833320fa82feb4bab7c4c2f7fb6a546783242a59156fa",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "10",
+        "mapPage": 139,
+        "descriptionPage": 144,
+        "numberKey": "I10"
+      }
     },
     {
       "id": "wiki-location-778b5c2f59f4c1a1e6ec",
@@ -5931,15 +6643,23 @@
       "mapMarkers": [
         {
           "code": "X5",
-          "x": 0.43594444444444447,
-          "y": 0.6701036764705881,
-          "kind": "official"
+          "x": 0.438493312023795,
+          "y": 0.6704234793060344,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "X11",
       "sourcePageSha256": "a0396093acfe158911d836c49e98c23fb3e0fb0f83fd8df5535c60544249aaf2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "11",
+        "mapPage": 287,
+        "descriptionPage": 290,
+        "numberKey": "X11"
+      }
     },
     {
       "id": "wiki-location-4d8330e4f798b080e320",
@@ -5954,15 +6674,23 @@
       "mapMarkers": [
         {
           "code": "W3",
-          "x": 0.30968188131313135,
-          "y": 0.7019664215686273,
-          "kind": "official"
+          "x": 0.3092456162017319,
+          "y": 0.70182033796264,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "W7",
       "sourcePageSha256": "d39e735632d1c5ff39c50afa83eba72b408e846e643acb4fb3d3327dd9e423d1",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "7",
+        "mapPage": 277,
+        "descriptionPage": 279,
+        "numberKey": "W7"
+      }
     },
     {
       "id": "wiki-location-5eef3c02323787bb61e7",
@@ -6123,15 +6851,23 @@
       "mapMarkers": [
         {
           "code": "H4",
-          "x": 0.5459193181818183,
-          "y": 0.5044991013071897,
-          "kind": "official"
+          "x": 0.5464105862942892,
+          "y": 0.5037975366396407,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "H16",
       "sourcePageSha256": "58e3a78979120a87fa518fe675da641ec3815d27668db6ee2f735a16996c38c3",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "16",
+        "mapPage": 129,
+        "descriptionPage": 132,
+        "numberKey": "H16"
+      }
     },
     {
       "id": "wiki-location-e660c012f16ae8d8d967",
@@ -6194,15 +6930,23 @@
       "mapMarkers": [
         {
           "code": "D2",
-          "x": 0.4558940025252525,
-          "y": 0.4767213235294118,
-          "kind": "official"
+          "x": 0.45527420460550216,
+          "y": 0.4784490407823233,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "D8",
       "sourcePageSha256": "cd49325d6ab9d0692fc4550193c3027dc352b1772aa1845dbb915339e27dc46e",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "8",
+        "mapPage": 91,
+        "descriptionPage": 93,
+        "numberKey": "D8"
+      }
     },
     {
       "id": "wiki-location-bfbc36a9e3b86232b300",
@@ -6265,15 +7009,23 @@
       "mapMarkers": [
         {
           "code": "O1",
-          "x": 0.49427771464646464,
-          "y": 0.3470644607843137,
-          "kind": "official"
+          "x": 0.4952020611594773,
+          "y": 0.3467816788832405,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "O14",
       "sourcePageSha256": "4b1ba02b528f4a3ac6ae72d9a2d2584f8ddb2126c43c1a232325e5ee73009019",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "14",
+        "mapPage": 201,
+        "descriptionPage": 204,
+        "numberKey": "O14"
+      }
     },
     {
       "id": "wiki-location-fd61dd76a98a8e5e5796",
@@ -6290,15 +7042,23 @@
       "mapMarkers": [
         {
           "code": "T7",
-          "x": 0.7132171085858586,
-          "y": 0.5314598856209151,
-          "kind": "official"
+          "x": 0.7131506332477852,
+          "y": 0.5319311616964109,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "T11",
       "sourcePageSha256": "ae87004cd89dbb8bcec65098ce2786f58f80a0aaf7e8ef407a3ba7904bd2f5b4",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "11",
+        "mapPage": 247,
+        "descriptionPage": 250,
+        "numberKey": "T11"
+      }
     },
     {
       "id": "wiki-location-ba58236d8611e3a8ad3e",
@@ -6331,15 +7091,23 @@
       "mapMarkers": [
         {
           "code": "G5",
-          "x": 0.4859445075757576,
-          "y": 0.5192049836601308,
-          "kind": "official"
+          "x": 0.4856296187287912,
+          "y": 0.5330857212415152,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "G21",
       "sourcePageSha256": "899f254ee4fb2c16fc3db5905e724e7bd6422082d2c3c1e4e8cc8bc594ec859c",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "21",
+        "mapPage": 115,
+        "descriptionPage": 122,
+        "numberKey": "G21"
+      }
     },
     {
       "id": "wiki-location-31356642c06b58c8add2",
@@ -6356,15 +7124,23 @@
       "mapMarkers": [
         {
           "code": "V2",
-          "x": 0.5695303661616161,
-          "y": 0.6563781862745097,
-          "kind": "official"
+          "x": 0.5700159422177327,
+          "y": 0.6553598956256443,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "V15",
       "sourcePageSha256": "6b018a4a8ab77385164a05ddfed969f5687828cebc0a8e65095ec9cd37813a7a",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "15",
+        "mapPage": 265,
+        "descriptionPage": 269,
+        "numberKey": "V15"
+      }
     },
     {
       "id": "wiki-location-e1c9d7d7362bbef89163",
@@ -6387,15 +7163,23 @@
       "mapMarkers": [
         {
           "code": "N1",
-          "x": 0.39276262626262626,
-          "y": 0.31895988562091504,
-          "kind": "official"
+          "x": 0.39236103599825506,
+          "y": 0.3179444181229902,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "N16",
       "sourcePageSha256": "717ee65653b9b5d1b07024e4b48c81683d4d23277ee4e292fbf44c74d3f329b2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "16",
+        "mapPage": 187,
+        "descriptionPage": 191,
+        "numberKey": "N16"
+      }
     },
     {
       "id": "wiki-location-0a2350eb333198402976",
@@ -6492,15 +7276,23 @@
       "mapMarkers": [
         {
           "code": "P5",
-          "x": 0.6483181818181818,
-          "y": 0.3295808006535948,
-          "kind": "official"
+          "x": 0.6506727604820538,
+          "y": 0.32923321728030097,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "P15",
       "sourcePageSha256": "409f6c413a1e8182ae786816136266416c59c596709e5c39d250a60269cc8ef6",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "15",
+        "mapPage": 213,
+        "descriptionPage": 217,
+        "numberKey": "P15"
+      }
     },
     {
       "id": "wiki-location-8d17ca47b454b29c1e5c",
@@ -6515,15 +7307,23 @@
       "mapMarkers": [
         {
           "code": "P6",
-          "x": 0.669530303030303,
-          "y": 0.34183570261437907,
-          "kind": "official"
+          "x": 0.6681618826308622,
+          "y": 0.3417862497248827,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "P16",
       "sourcePageSha256": "409f6c413a1e8182ae786816136266416c59c596709e5c39d250a60269cc8ef6",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "16",
+        "mapPage": 213,
+        "descriptionPage": 217,
+        "numberKey": "P16"
+      }
     },
     {
       "id": "wiki-location-2dcc2aa784281f20f62d",
@@ -6556,15 +7356,23 @@
       "mapMarkers": [
         {
           "code": "T8",
-          "x": 0.7662474116161617,
-          "y": 0.5249239379084968,
-          "kind": "official"
+          "x": 0.7668943243853955,
+          "y": 0.5254921112844135,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "T13",
       "sourcePageSha256": "ae87004cd89dbb8bcec65098ce2786f58f80a0aaf7e8ef407a3ba7904bd2f5b4",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "13",
+        "mapPage": 247,
+        "descriptionPage": 250,
+        "numberKey": "T13"
+      }
     },
     {
       "id": "wiki-location-083705f36d67c4038865",
@@ -6579,15 +7387,23 @@
       "mapMarkers": [
         {
           "code": "B10",
-          "x": 0.569530303030303,
-          "y": 0.43415596405228757,
-          "kind": "official"
+          "x": 0.5701548304899918,
+          "y": 0.4339018578290398,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "B31",
       "sourcePageSha256": "af8a9d215973a7908d1a569b7528570ca899bb6f887e1b067447442ca7617db8",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "31",
+        "mapPage": 67,
+        "descriptionPage": 75,
+        "numberKey": "B31"
+      }
     },
     {
       "id": "wiki-location-d49524acbab6d0614b39",
@@ -6618,15 +7434,23 @@
       "mapMarkers": [
         {
           "code": "P7",
-          "x": 0.712459595959596,
-          "y": 0.461116748366013,
-          "kind": "official"
+          "x": 0.7170976018844993,
+          "y": 0.4616921677715185,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "P17",
       "sourcePageSha256": "409f6c413a1e8182ae786816136266416c59c596709e5c39d250a60269cc8ef6",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "17",
+        "mapPage": 213,
+        "descriptionPage": 218,
+        "numberKey": "P17"
+      }
     },
     {
       "id": "wiki-location-17225960bb3cb478a56d",
@@ -6641,15 +7465,23 @@
       "mapMarkers": [
         {
           "code": "C5",
-          "x": 0.3002121212121212,
-          "y": 0.4536821078431373,
-          "kind": "official"
+          "x": 0.29970144548067296,
+          "y": 0.4524229910141337,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "C19",
       "sourcePageSha256": "0582e29255c4274762c218a57af89ffaabf940ab31092b966d24f3a4baee515d",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "19",
+        "mapPage": 81,
+        "descriptionPage": 86,
+        "numberKey": "C19"
+      }
     },
     {
       "id": "wiki-location-fad74e4a3ce7119452f1",
@@ -6680,15 +7512,23 @@
       "mapMarkers": [
         {
           "code": "G11",
-          "x": 0.40336875,
-          "y": 0.5204304738562092,
-          "kind": "official"
+          "x": 0.40287642505670224,
+          "y": 0.5199846179115973,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "G23",
       "sourcePageSha256": "899f254ee4fb2c16fc3db5905e724e7bd6422082d2c3c1e4e8cc8bc594ec859c",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "23",
+        "mapPage": 115,
+        "descriptionPage": 123,
+        "numberKey": "G23"
+      }
     },
     {
       "id": "wiki-location-5c0190041f18b5b4d39a",
@@ -6719,15 +7559,23 @@
       "mapMarkers": [
         {
           "code": "F3",
-          "x": 0.33594450757575756,
-          "y": 0.49412328431372554,
-          "kind": "official"
+          "x": 0.3291942037150293,
+          "y": 0.49395130421315475,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "F10",
       "sourcePageSha256": "87e4c47ecba520deb018643f68ff502ce444a5c61626b9da4dd817494dad2963",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "10",
+        "mapPage": 105,
+        "descriptionPage": 108,
+        "numberKey": "F10"
+      }
     },
     {
       "id": "wiki-location-f94b13ba3a020451b385",
@@ -6751,13 +7599,22 @@
           "code": "F4",
           "x": 0.3018535984848485,
           "y": 0.49003831699346406,
-          "kind": "official"
+          "kind": "official",
+          "coordinateSource": "atlas-2025-area"
         }
       ],
       "wikiSectionRef": "F11",
       "sourcePageSha256": "87e4c47ecba520deb018643f68ff502ce444a5c61626b9da4dd817494dad2963",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "11",
+        "mapPage": 105,
+        "descriptionPage": 108,
+        "numberKey": "F11",
+        "note": "В книге обозначены отдельные объекты внутри территории; общей точечной метки нет. Сохранён общий ориентир из Атласа 2025, не вход в конкретное здание."
+      }
     },
     {
       "id": "wiki-location-91a2ca5ff7921c7524e2",
@@ -6852,15 +7709,23 @@
       "mapMarkers": [
         {
           "code": "P8",
-          "x": 0.5609444444444445,
-          "y": 0.3214108660130719,
-          "kind": "official"
+          "x": 0.5623139881050814,
+          "y": 0.3212634304453814,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "P18",
       "sourcePageSha256": "409f6c413a1e8182ae786816136266416c59c596709e5c39d250a60269cc8ef6",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "18",
+        "mapPage": 213,
+        "descriptionPage": 218,
+        "numberKey": "P18"
+      }
     },
     {
       "id": "wiki-location-0455a9dc7ebbeef5a00f",
@@ -7053,15 +7918,23 @@
       "mapMarkers": [
         {
           "code": "U2",
-          "x": 0.612459595959596,
-          "y": 0.6147115196078431,
-          "kind": "official"
+          "x": 0.6112424429480402,
+          "y": 0.6145945448084967,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "U9",
       "sourcePageSha256": "dccd10fd9ec3d4b8d0979b8aff6cda134b99220e654ab724bf0b7e95eadfd1b5",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "9",
+        "mapPage": 257,
+        "descriptionPage": 259,
+        "numberKey": "U9"
+      }
     },
     {
       "id": "wiki-location-3982bf7d2e893df99d06",
@@ -7188,15 +8061,23 @@
       "mapMarkers": [
         {
           "code": "A10",
-          "x": 0.3570303661616162,
-          "y": 0.4401200163398692,
-          "kind": "official"
+          "x": 0.35689199308455244,
+          "y": 0.4405636514212309,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "A17",
       "sourcePageSha256": "21195cdabda8132220245ee4d01947e5b3f7a2706ed663b153f1dbf82bff34d2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "17",
+        "mapPage": 55,
+        "descriptionPage": 61,
+        "numberKey": "A17"
+      }
     },
     {
       "id": "wiki-location-69e4561133fd978d6053",
@@ -7227,15 +8108,23 @@
       "mapMarkers": [
         {
           "code": "F5",
-          "x": 0.4218030934343434,
-          "y": 0.49330629084967326,
-          "kind": "official"
+          "x": 0.41176133821932887,
+          "y": 0.49174691415794103,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "F12",
       "sourcePageSha256": "87e4c47ecba520deb018643f68ff502ce444a5c61626b9da4dd817494dad2963",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "12",
+        "mapPage": 105,
+        "descriptionPage": 109,
+        "numberKey": "F12"
+      }
     },
     {
       "id": "wiki-location-5c5380602a92ef8736af",
@@ -7298,15 +8187,23 @@
       "mapMarkers": [
         {
           "code": "N4",
-          "x": 0.5046313131313132,
-          "y": 0.27811021241830064,
-          "kind": "official"
+          "x": 0.5062972664566441,
+          "y": 0.27763280814338215,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "N21",
       "sourcePageSha256": "717ee65653b9b5d1b07024e4b48c81683d4d23277ee4e292fbf44c74d3f329b2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "21",
+        "mapPage": 187,
+        "descriptionPage": 192,
+        "numberKey": "N21"
+      }
     },
     {
       "id": "wiki-location-435f86272da068aceca7",
@@ -7353,15 +8250,23 @@
       "mapMarkers": [
         {
           "code": "W4",
-          "x": 0.3715505681818182,
-          "y": 0.6627507352941175,
-          "kind": "official"
+          "x": 0.3697086370885549,
+          "y": 0.6621657933957509,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "W10",
       "sourcePageSha256": "d39e735632d1c5ff39c50afa83eba72b408e846e643acb4fb3d3327dd9e423d1",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "10",
+        "mapPage": 277,
+        "descriptionPage": 280,
+        "numberKey": "W10"
+      }
     },
     {
       "id": "wiki-location-f9465291eb156f603119",
@@ -7408,15 +8313,23 @@
       "mapMarkers": [
         {
           "code": "W6",
-          "x": 0.3210455176767677,
-          "y": 0.6995154411764705,
-          "kind": "official"
+          "x": 0.318539563703317,
+          "y": 0.699285454832224,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "W11",
       "sourcePageSha256": "d39e735632d1c5ff39c50afa83eba72b408e846e643acb4fb3d3327dd9e423d1",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "11",
+        "mapPage": 277,
+        "descriptionPage": 280,
+        "numberKey": "W11"
+      }
     },
     {
       "id": "wiki-location-46c6d156f2b45da3f76f",
@@ -7543,15 +8456,23 @@
       "mapMarkers": [
         {
           "code": "H5",
-          "x": 0.5194041666666667,
-          "y": 0.48815923202614386,
-          "kind": "official"
+          "x": 0.5225814966431143,
+          "y": 0.48800517426734463,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "H19",
       "sourcePageSha256": "58e3a78979120a87fa518fe675da641ec3815d27668db6ee2f735a16996c38c3",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "19",
+        "mapPage": 129,
+        "descriptionPage": 133,
+        "numberKey": "H19"
+      }
     },
     {
       "id": "wiki-location-7feb0c674a6f6ef7acbb",
@@ -7568,15 +8489,23 @@
       "mapMarkers": [
         {
           "code": "F6",
-          "x": 0.35362127525252524,
-          "y": 0.4884043300653595,
-          "kind": "official"
+          "x": 0.35345327617705224,
+          "y": 0.4876189289682675,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "F13",
       "sourcePageSha256": "87e4c47ecba520deb018643f68ff502ce444a5c61626b9da4dd817494dad2963",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "13",
+        "mapPage": 105,
+        "descriptionPage": 109,
+        "numberKey": "F13"
+      }
     },
     {
       "id": "wiki-location-d8cf6465f71bbc890954",
@@ -7593,15 +8522,23 @@
       "mapMarkers": [
         {
           "code": "E5",
-          "x": 0.6003383838383838,
-          "y": 0.4692866830065359,
-          "kind": "official"
+          "x": 0.5723464940402245,
+          "y": 0.4695306684619726,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "E13",
       "sourcePageSha256": "cf6d0294b01cf6bbcbca37914541435efff38a2793bb2201622f7ea6759366dc",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "13",
+        "mapPage": 97,
+        "descriptionPage": 101,
+        "numberKey": "E13"
+      }
     },
     {
       "id": "wiki-location-1583f78aefb87bd7a34d",
@@ -7701,15 +8638,23 @@
       "mapMarkers": [
         {
           "code": "G12",
-          "x": 0.42470707070707076,
-          "y": 0.5085840686274511,
-          "kind": "official"
+          "x": 0.4219597794209413,
+          "y": 0.5072875120943725,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "G24",
       "sourcePageSha256": "899f254ee4fb2c16fc3db5905e724e7bd6422082d2c3c1e4e8cc8bc594ec859c",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "24",
+        "mapPage": 115,
+        "descriptionPage": 123,
+        "numberKey": "G24"
+      }
     },
     {
       "id": "wiki-location-e3b2b07b68ffd058ec95",
@@ -7758,15 +8703,23 @@
       "mapMarkers": [
         {
           "code": "J7",
-          "x": 0.29048983585858584,
-          "y": 0.5442050653594771,
-          "kind": "official"
+          "x": 0.29197784886583933,
+          "y": 0.5430917805052758,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "J12",
       "sourcePageSha256": "4d2067ecaff6b5064bb038213dbc4ff5d985121ffdfff9cfe72eb24d5c78ae37",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "12",
+        "mapPage": 151,
+        "descriptionPage": 154,
+        "numberKey": "J12"
+      }
     },
     {
       "id": "wiki-location-a75822f48691eb766724",
@@ -7829,15 +8782,23 @@
       "mapMarkers": [
         {
           "code": "N5",
-          "x": 0.44276262626262625,
-          "y": 0.35163962418300654,
-          "kind": "official"
+          "x": 0.44007362835138025,
+          "y": 0.3565953151597767,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "N24",
       "sourcePageSha256": "717ee65653b9b5d1b07024e4b48c81683d4d23277ee4e292fbf44c74d3f329b2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "24",
+        "mapPage": 187,
+        "descriptionPage": 193,
+        "numberKey": "N24"
+      }
     },
     {
       "id": "wiki-location-58df59044398f8250ce9",
@@ -7852,15 +8813,23 @@
       "mapMarkers": [
         {
           "code": "N6",
-          "x": 0.46649999999999997,
-          "y": 0.36585531045751635,
-          "kind": "official"
+          "x": 0.465492575870769,
+          "y": 0.36434068997560515,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "N25",
       "sourcePageSha256": "717ee65653b9b5d1b07024e4b48c81683d4d23277ee4e292fbf44c74d3f329b2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "25",
+        "mapPage": 187,
+        "descriptionPage": 193,
+        "numberKey": "N25"
+      }
     },
     {
       "id": "wiki-location-f6deb11b1a81ce9ce2ed",
@@ -7882,15 +8851,23 @@
       "mapMarkers": [
         {
           "code": "B11",
-          "x": 0.6158686868686869,
-          "y": 0.43399256535947706,
-          "kind": "official"
+          "x": 0.6154026437247534,
+          "y": 0.43457565278004073,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "B36",
       "sourcePageSha256": "af8a9d215973a7908d1a569b7528570ca899bb6f887e1b067447442ca7617db8",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "36",
+        "mapPage": 67,
+        "descriptionPage": 76,
+        "numberKey": "B36"
+      }
     },
     {
       "id": "wiki-location-7326b470902e84880435",
@@ -7953,15 +8930,23 @@
       "mapMarkers": [
         {
           "code": "P9",
-          "x": 0.683419191919192,
-          "y": 0.45948276143790845,
-          "kind": "official"
+          "x": 0.686261023380328,
+          "y": 0.4602044057887734,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "P19",
       "sourcePageSha256": "409f6c413a1e8182ae786816136266416c59c596709e5c39d250a60269cc8ef6",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "19",
+        "mapPage": 213,
+        "descriptionPage": 218,
+        "numberKey": "P19"
+      }
     },
     {
       "id": "wiki-location-f1e31c1e3cbc94f2a8de",
@@ -7976,15 +8961,23 @@
       "mapMarkers": [
         {
           "code": "P10",
-          "x": 0.7010959595959596,
-          "y": 0.46765269607843135,
-          "kind": "official"
+          "x": 0.6988547541717669,
+          "y": 0.46666822605975244,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "P20",
       "sourcePageSha256": "409f6c413a1e8182ae786816136266416c59c596709e5c39d250a60269cc8ef6",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "20",
+        "mapPage": 213,
+        "descriptionPage": 218,
+        "numberKey": "P20"
+      }
     },
     {
       "id": "wiki-location-f93a1d1975641e899666",
@@ -8049,15 +9042,23 @@
       "mapMarkers": [
         {
           "code": "J6",
-          "x": 0.3069039772727273,
-          "y": 0.5540089869281045,
-          "kind": "official"
+          "x": 0.3051756193379119,
+          "y": 0.5534125229755749,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "J14",
       "sourcePageSha256": "4d2067ecaff6b5064bb038213dbc4ff5d985121ffdfff9cfe72eb24d5c78ae37",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "14",
+        "mapPage": 151,
+        "descriptionPage": 155,
+        "numberKey": "J14"
+      }
     },
     {
       "id": "wiki-location-b2a61b5f1f450f6e57db",
@@ -8090,15 +9091,23 @@
       "mapMarkers": [
         {
           "code": "N7",
-          "x": 0.47912626262626257,
-          "y": 0.32418864379084966,
-          "kind": "official"
+          "x": 0.4772133238294549,
+          "y": 0.32313474916244894,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "N26",
       "sourcePageSha256": "717ee65653b9b5d1b07024e4b48c81683d4d23277ee4e292fbf44c74d3f329b2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "26",
+        "mapPage": 187,
+        "descriptionPage": 193,
+        "numberKey": "N26"
+      }
     },
     {
       "id": "wiki-location-77193e91c791a3bf8a70",
@@ -8182,15 +9191,23 @@
       "mapMarkers": [
         {
           "code": "I3",
-          "x": 0.3715505681818182,
-          "y": 0.5226363562091503,
-          "kind": "official"
+          "x": 0.3705976847936539,
+          "y": 0.5232080911384555,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "I11",
       "sourcePageSha256": "a0a7f63857f0d29335f833320fa82feb4bab7c4c2f7fb6a546783242a59156fa",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "11",
+        "mapPage": 139,
+        "descriptionPage": 144,
+        "numberKey": "I11"
+      }
     },
     {
       "id": "wiki-location-88a9e314b7c5ae8e52a0",
@@ -8205,15 +9222,23 @@
       "mapMarkers": [
         {
           "code": "W7",
-          "x": 0.2844293560606061,
-          "y": 0.6635677287581698,
-          "kind": "official"
+          "x": 0.2878086977379094,
+          "y": 0.6621219758509291,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "W15",
       "sourcePageSha256": "d39e735632d1c5ff39c50afa83eba72b408e846e643acb4fb3d3327dd9e423d1",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "15",
+        "mapPage": 277,
+        "descriptionPage": 281,
+        "numberKey": "W15"
+      }
     },
     {
       "id": "wiki-location-a8fb4d6e05ca8f0b35ad",
@@ -8228,15 +9253,23 @@
       "mapMarkers": [
         {
           "code": "G13",
-          "x": 0.46006060606060606,
-          "y": 0.5004141339869281,
-          "kind": "official"
+          "x": 0.4604000216904604,
+          "y": 0.5009917127301239,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "G25",
       "sourcePageSha256": "899f254ee4fb2c16fc3db5905e724e7bd6422082d2c3c1e4e8cc8bc594ec859c",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "25",
+        "mapPage": 115,
+        "descriptionPage": 124,
+        "numberKey": "G25"
+      }
     },
     {
       "id": "wiki-location-b7f7e6f9b440d61e4ca4",
@@ -8331,15 +9364,23 @@
       "mapMarkers": [
         {
           "code": "Q4",
-          "x": 0.7363232954545454,
-          "y": 0.3410187091503268,
-          "kind": "official"
+          "x": 0.7387968327698222,
+          "y": 0.34066634366336185,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "Q15",
       "sourcePageSha256": "337c3902b1f8f8e018c31877cccb9d9b5140d95dc9491f26a1696aa4f729c2a8",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "15",
+        "mapPage": 225,
+        "descriptionPage": 228,
+        "numberKey": "Q15"
+      }
     },
     {
       "id": "wiki-location-c0bd554791881402c4dd",
@@ -8423,15 +9464,23 @@
       "mapMarkers": [
         {
           "code": "A11",
-          "x": 0.40412632575757573,
-          "y": 0.44322459150326804,
-          "kind": "official"
+          "x": 0.40199862318400903,
+          "y": 0.4438589785444284,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "A21",
       "sourcePageSha256": "21195cdabda8132220245ee4d01947e5b3f7a2706ed663b153f1dbf82bff34d2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "21",
+        "mapPage": 55,
+        "descriptionPage": 62,
+        "numberKey": "A21"
+      }
     },
     {
       "id": "wiki-location-05c3f80a8dd148126b0e",
@@ -8462,15 +9511,23 @@
       "mapMarkers": [
         {
           "code": "I4",
-          "x": 0.3940253156565656,
-          "y": 0.5883226307189543,
-          "kind": "official"
+          "x": 0.3929664818914029,
+          "y": 0.5890681320700981,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "I12",
       "sourcePageSha256": "a0a7f63857f0d29335f833320fa82feb4bab7c4c2f7fb6a546783242a59156fa",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "12",
+        "mapPage": 139,
+        "descriptionPage": 144,
+        "numberKey": "I12"
+      }
     },
     {
       "id": "wiki-location-2687bf9d257bc4834f2c",
@@ -8522,15 +9579,23 @@
       "mapMarkers": [
         {
           "code": "I5",
-          "x": 0.3589243055555556,
-          "y": 0.6006592320261437,
-          "kind": "official"
+          "x": 0.3613142775206769,
+          "y": 0.5994942893312495,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "I13",
       "sourcePageSha256": "a0a7f63857f0d29335f833320fa82feb4bab7c4c2f7fb6a546783242a59156fa",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "13",
+        "mapPage": 139,
+        "descriptionPage": 145,
+        "numberKey": "I13"
+      }
     },
     {
       "id": "wiki-location-d556128f8e02dd30b4e7",
@@ -8577,15 +9642,23 @@
       "mapMarkers": [
         {
           "code": "N8",
-          "x": 0.495540404040404,
-          "y": 0.25229321895424833,
-          "kind": "official"
+          "x": 0.4922073398177875,
+          "y": 0.2523815663772069,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "N28",
       "sourcePageSha256": "717ee65653b9b5d1b07024e4b48c81683d4d23277ee4e292fbf44c74d3f329b2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "28",
+        "mapPage": 187,
+        "descriptionPage": 194,
+        "numberKey": "N28"
+      }
     },
     {
       "id": "wiki-location-aec9971f2756bbd07f9e",
@@ -8634,15 +9707,23 @@
       "mapMarkers": [
         {
           "code": "A12",
-          "x": 0.3504646464646464,
-          "y": 0.4589108660130718,
-          "kind": "official"
+          "x": 0.34855785115052046,
+          "y": 0.45758413852788715,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "A22",
       "sourcePageSha256": "21195cdabda8132220245ee4d01947e5b3f7a2706ed663b153f1dbf82bff34d2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "22",
+        "mapPage": 55,
+        "descriptionPage": 62,
+        "numberKey": "A22"
+      }
     },
     {
       "id": "wiki-location-c90d5411589e31bda513",
@@ -8689,15 +9770,23 @@
       "mapMarkers": [
         {
           "code": "I6",
-          "x": 0.43960612373737373,
-          "y": 0.5777834150326797,
-          "kind": "official"
+          "x": 0.43994139280923966,
+          "y": 0.5781872858090122,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "I14",
       "sourcePageSha256": "a0a7f63857f0d29335f833320fa82feb4bab7c4c2f7fb6a546783242a59156fa",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "14",
+        "mapPage": 139,
+        "descriptionPage": 145,
+        "numberKey": "I14"
+      }
     },
     {
       "id": "wiki-location-ec9d6c36bab8bc3dd603",
@@ -8744,15 +9833,23 @@
       "mapMarkers": [
         {
           "code": "N9",
-          "x": 0.4917525252525252,
-          "y": 0.27925400326797384,
-          "kind": "official"
+          "x": 0.4931075109621899,
+          "y": 0.28091747245172244,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "N30",
       "sourcePageSha256": "717ee65653b9b5d1b07024e4b48c81683d4d23277ee4e292fbf44c74d3f329b2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "30",
+        "mapPage": 187,
+        "descriptionPage": 194,
+        "numberKey": "N30"
+      }
     },
     {
       "id": "wiki-location-98e85e7cd436f6e31965",
@@ -8815,15 +9912,23 @@
       "mapMarkers": [
         {
           "code": "F7",
-          "x": 0.27394955808080806,
-          "y": 0.49600245098039214,
-          "kind": "official"
+          "x": 0.27386573796658553,
+          "y": 0.4961550526159537,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "F15",
       "sourcePageSha256": "87e4c47ecba520deb018643f68ff502ce444a5c61626b9da4dd817494dad2963",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "15",
+        "mapPage": 105,
+        "descriptionPage": 110,
+        "numberKey": "F15"
+      }
     },
     {
       "id": "wiki-location-f7749cb77630c2556b0a",
@@ -9000,15 +10105,23 @@
       "mapMarkers": [
         {
           "code": "D3",
-          "x": 0.4171313762626263,
-          "y": 0.43758741830065356,
-          "kind": "official"
+          "x": 0.4167479397270422,
+          "y": 0.4375080620661199,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "D10",
       "sourcePageSha256": "cd49325d6ab9d0692fc4550193c3027dc352b1772aa1845dbb915339e27dc46e",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "10",
+        "mapPage": 91,
+        "descriptionPage": 93,
+        "numberKey": "D10"
+      }
     },
     {
       "id": "wiki-location-e4e7c477d1c777b39dd3",
@@ -9041,15 +10154,23 @@
       "mapMarkers": [
         {
           "code": "A13",
-          "x": 0.3641010101010101,
-          "y": 0.465691911764706,
-          "kind": "official"
+          "x": 0.3652852728730156,
+          "y": 0.46661177710931206,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "A23",
       "sourcePageSha256": "21195cdabda8132220245ee4d01947e5b3f7a2706ed663b153f1dbf82bff34d2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "23",
+        "mapPage": 55,
+        "descriptionPage": 63,
+        "numberKey": "A23"
+      }
     },
     {
       "id": "wiki-location-4f62d0c20a389579a514",
@@ -9080,15 +10201,23 @@
       "mapMarkers": [
         {
           "code": "D4",
-          "x": 0.458798042929293,
-          "y": 0.4220645424836601,
-          "kind": "official"
+          "x": 0.45879673048169783,
+          "y": 0.421233985193832,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "D11",
       "sourcePageSha256": "cd49325d6ab9d0692fc4550193c3027dc352b1772aa1845dbb915339e27dc46e",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "11",
+        "mapPage": 91,
+        "descriptionPage": 93,
+        "numberKey": "D11"
+      }
     },
     {
       "id": "wiki-location-a4c919d1ad1a236924b1",
@@ -9103,15 +10232,23 @@
       "mapMarkers": [
         {
           "code": "N10",
-          "x": 0.4587979797979798,
-          "y": 0.300005637254902,
-          "kind": "official"
+          "x": 0.45697776965217346,
+          "y": 0.3001205250448833,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "N33",
       "sourcePageSha256": "717ee65653b9b5d1b07024e4b48c81683d4d23277ee4e292fbf44c74d3f329b2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "33",
+        "mapPage": 187,
+        "descriptionPage": 195,
+        "numberKey": "N33"
+      }
     },
     {
       "id": "wiki-location-18a955b63cdcad5a1b74",
@@ -9142,15 +10279,23 @@
       "mapMarkers": [
         {
           "code": "N11",
-          "x": 0.4714242424242424,
-          "y": 0.28693374183006537,
-          "kind": "official"
+          "x": 0.4721886040559071,
+          "y": 0.28717659990361516,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "N32",
       "sourcePageSha256": "717ee65653b9b5d1b07024e4b48c81683d4d23277ee4e292fbf44c74d3f329b2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "32",
+        "mapPage": 187,
+        "descriptionPage": 194,
+        "numberKey": "N32"
+      }
     },
     {
       "id": "wiki-location-50668854730e73fd75df",
@@ -9165,15 +10310,23 @@
       "mapMarkers": [
         {
           "code": "B12",
-          "x": 0.43657582070707074,
-          "y": 0.41193374183006537,
-          "kind": "official"
+          "x": 0.43448312357513336,
+          "y": 0.41183367292125106,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "B37",
       "sourcePageSha256": "af8a9d215973a7908d1a569b7528570ca899bb6f887e1b067447442ca7617db8",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "37",
+        "mapPage": 67,
+        "descriptionPage": 76,
+        "numberKey": "B37"
+      }
     },
     {
       "id": "wiki-location-33a477dd7d455796b270",
@@ -9284,15 +10437,23 @@
       "mapMarkers": [
         {
           "code": "L4",
-          "x": 0.5320304292929293,
-          "y": 0.5339108660130719,
-          "kind": "official"
+          "x": 0.5339519454187479,
+          "y": 0.5325319893078841,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "L15",
       "sourcePageSha256": "3767a8e31bdab2c7bc2532610b7024d8e2c02bc5a7cb0c0d4aabe661d58e38e7",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "15",
+        "mapPage": 167,
+        "descriptionPage": 171,
+        "numberKey": "L15"
+      }
     },
     {
       "id": "wiki-location-644ad516e29cd7887926",
@@ -9307,15 +10468,23 @@
       "mapMarkers": [
         {
           "code": "I7",
-          "x": 0.34604551767676767,
-          "y": 0.5123423202614379,
-          "kind": "official"
+          "x": 0.34731716808676594,
+          "y": 0.5117252946684528,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "I16",
       "sourcePageSha256": "a0a7f63857f0d29335f833320fa82feb4bab7c4c2f7fb6a546783242a59156fa",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "16",
+        "mapPage": 139,
+        "descriptionPage": 145,
+        "numberKey": "I16"
+      }
     },
     {
       "id": "wiki-location-9032a5751b69e0f719e0",
@@ -9346,15 +10515,23 @@
       "mapMarkers": [
         {
           "code": "I8",
-          "x": 0.3005909722222222,
-          "y": 0.5107083333333333,
-          "kind": "official"
+          "x": 0.3006788285003982,
+          "y": 0.5097194756703602,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "I17",
       "sourcePageSha256": "a0a7f63857f0d29335f833320fa82feb4bab7c4c2f7fb6a546783242a59156fa",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "17",
+        "mapPage": 139,
+        "descriptionPage": 146,
+        "numberKey": "I17"
+      }
     },
     {
       "id": "wiki-location-0d8682858c25c05ee23c",
@@ -9385,15 +10562,23 @@
       "mapMarkers": [
         {
           "code": "F8",
-          "x": 0.27394955808080806,
-          "y": 0.48293055555555553,
-          "kind": "official"
+          "x": 0.2742905586320246,
+          "y": 0.4829408542840017,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "F18",
       "sourcePageSha256": "87e4c47ecba520deb018643f68ff502ce444a5c61626b9da4dd817494dad2963",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "18",
+        "mapPage": 105,
+        "descriptionPage": 110,
+        "numberKey": "F18"
+      }
     },
     {
       "id": "wiki-location-8c8be98c90ef212f0d1c",
@@ -9408,15 +10593,23 @@
       "mapMarkers": [
         {
           "code": "H6",
-          "x": 0.5572829545454546,
-          "y": 0.5151200163398694,
-          "kind": "official"
+          "x": 0.5539587703358978,
+          "y": 0.5170794884257123,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "H25",
       "sourcePageSha256": "58e3a78979120a87fa518fe675da641ec3815d27668db6ee2f735a16996c38c3",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "25",
+        "mapPage": 129,
+        "descriptionPage": 134,
+        "numberKey": "H25"
+      }
     },
     {
       "id": "wiki-location-94d5616f631f77075f2c",
@@ -9495,15 +10688,23 @@
       "mapMarkers": [
         {
           "code": "N12",
-          "x": 0.36536369949494946,
-          "y": 0.2852997549019608,
-          "kind": "official"
+          "x": 0.36880039971438755,
+          "y": 0.28378832454061226,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "N36",
       "sourcePageSha256": "717ee65653b9b5d1b07024e4b48c81683d4d23277ee4e292fbf44c74d3f329b2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "36",
+        "mapPage": 187,
+        "descriptionPage": 195,
+        "numberKey": "N36"
+      }
     },
     {
       "id": "wiki-location-1a88507163392e715d61",
@@ -9598,15 +10799,23 @@
       "mapMarkers": [
         {
           "code": "N13",
-          "x": 0.45362127525252527,
-          "y": 0.29322459150326796,
-          "kind": "official"
+          "x": 0.45697730280115156,
+          "y": 0.2921951118139825,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "N37",
       "sourcePageSha256": "717ee65653b9b5d1b07024e4b48c81683d4d23277ee4e292fbf44c74d3f329b2",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "37",
+        "mapPage": 187,
+        "descriptionPage": 195,
+        "numberKey": "N37"
+      }
     },
     {
       "id": "wiki-location-01d458bc97dc09a71317",
@@ -9735,22 +10944,30 @@
       "mapMarkers": [
         {
           "code": "V7",
-          "x": 0.6970554924242425,
-          "y": 0.6049075980392157,
-          "kind": "official"
+          "x": 0.6977794756052519,
+          "y": 0.6046821432392262,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "V19",
       "sourcePageSha256": "6b018a4a8ab77385164a05ddfed969f5687828cebc0a8e65095ec9cd37813a7a",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "19",
+        "mapPage": 265,
+        "descriptionPage": 270,
+        "numberKey": "V19"
+      }
     },
     {
       "id": "wiki-location-e693e3f50fcc0003130a",
       "name": "Woodland Park",
       "district": "Северный Хейвуд",
       "districtLetter": "T",
-      "description": "Код безопасности 5: Шестая улица, усиленный лёгкий\n\nПлотно застроенный квартал на краю района, где местные живут, работают и выпускают пар. Смесь старого и нового: стареющие бетонные коробки рядом с неоновыми витринами.\n\nBiotechnica Palm Grove — впечатляющая роща генетически спроектированных пальм с внешними биомониторами, служащая одновременно исследовательской площадкой и странно безмятежным ориентиром. Городские легенды гласят, что одно дерево на краю рощи имеет вкус к мелким грызунам — и изредка к пьяным.\n\nBreeze — уютная лавка рекреационных веществ, которую держат Нана (техник 7) и Поп-Поп (соло 6), где домашние уличные наркотики и дружеский совет отпускают в равных долях. Кухня в подвале лавки — местная легенда: говорят, там делают самые «творческие» смеси в Найт-Сити. Здание делит с Burning Bright Bodega — хаотичным угловым магазином Эллы Кореллы (фиксер 2). Элла держит понемногу всего и всегда держит дробовик под рукой. Местные клянутся, что она знает дела каждого, но хранит секреты лучше любого сейфа.\n\nThe Palms — яркий контейнерный посёлок с жильём и приличной едой благодаря Terminus, стационарному фудтраку Карри Зоте (рокербой 4). Жители гордятся своим самодельным духом и крепким чувством общины.\n\nThe Shark — пятиэтажный жилой дом под мигающей неоновой вывеской-акулой, приютивший партизанский огород семьи Пирс. Владелец, фиксер и техник Билли Флайт (фиксер 3 / техник 2), держит дом как доступное жильё и как узел мелких сделок. Рядом на площадке он ведёт Choom Goes Vroom — мастерскую и хранение транспорта.\n\nXanadu — роллердром и ночной клуб, которым заправляют Музы Вудленд-Парка. Место смешивает ретро-диско с бьющей электроникой. Музы входят в Лигу роллер-дерби Wonderland и регулярно проводят здесь бои.\n\nZolletta — здание из белой штукатурки с куб-отелем, мелким бизнесом и Местом покоя — небольшим молитвенным и медитационным пространством для кочевой семьи Навад, когда та в городе.",
+      "description": "Код безопасности 5: Шестая улица, усиленный лёгкий\n\nПлотно застроенный квартал на краю района, где местные живут, работают и выпускают пар. Смесь старого и нового: стареющие бетонные коробки рядом с неоновыми витринами.\n\nBiotechnica Palm Grove — впечатляющая роща генетически спроектированных пальм с внешними биомониторами, служащая одновременно исследовательской площадкой и странно безмятежным ориентиром. Городские легенды гласят, что одно дерево на краю рощи имеет вкус к мелким грызунам — и изредка к пьяным.\n\nBreeze — уютная лавка рекреационных веществ, которую держат Нана (техник 7) и Поп-Поп (соло 6), где домашние уличные наркотики и дружеский совет отпускают в равных долях. Кухня в подвале лавки — местная легенда: говорят, там делают самые «творческие» смеси в Найт-Сити. Здание делит с Burning Bright Bodega — хаотичным угловым магазином Эллы Кореллы (фиксер 2). Элла держит понемногу всего и всегда держит дробовик под рукой. Местные клянутся, что она знает дела каждого, но хранит секреты лучше любого сейфа.\n\nThe Palms — яркий контейнерный посёлок с жильём и приличной едой благодаря Terminus, стационарному фудтраку Карри Зоте (рокербой 4). Жители гордятся своим самодельным духом и крепким чувством общины.\n\nThe Shark — пятиэтажный жилой дом под мигающей неоновой вывеской-акулой, приютивший партизанский огород семьи Пирс. Владелец, фиксер и техник Билли Флайт (фиксер 3 / техник 2), держит дом как доступное жильё и как узел мелких сделок. Рядом на площадке он ведёт Choom Goes Vroom — мастерскую и хранение транспорта.\n\nXanadu — роллердром и ночной клуб, которым заправляют Музы Вудленд-Парка. Место смешивает ретро-диско с бьющей электроникой. Музы входят в Лигу роллер-дерби Wonderland и регулярно проводят здесь матчи по роллер-дерби.\n\nZolletta — здание из белой штукатурки с куб-отелем, мелким бизнесом и Местом покоя — небольшим молитвенным и медитационным пространством для кочевой семьи Навад, когда та в городе.",
       "sourceUrl": "https://defaulter444.github.io/cyberpunk-wiki/nait-siti/raiony/materik/severnyi-heivud.html#18-woodland-park",
       "sourceCitation": "NC2045, с. 245–254",
       "aliases": [],
@@ -9760,13 +10977,29 @@
           "code": "T9",
           "x": 0.7409948863636364,
           "y": 0.4906102124183007,
-          "kind": "official"
+          "kind": "official",
+          "coordinateSource": "atlas-2025-area"
         }
       ],
       "wikiSectionRef": "T18",
       "sourcePageSha256": "ae87004cd89dbb8bcec65098ce2786f58f80a0aaf7e8ef407a3ba7904bd2f5b4",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "18",
+        "mapPage": 247,
+        "descriptionPage": 252,
+        "numberKey": "T18",
+        "note": "В книге обозначены отдельные объекты внутри территории; общей точечной метки нет. Сохранён общий ориентир из Атласа 2025, не вход в конкретное здание."
+      },
+      "descriptionCorrections": [
+        {
+          "from": "регулярно проводят здесь бои.",
+          "to": "регулярно проводят здесь матчи по роллер-дерби.",
+          "sourcePage": 252
+        }
+      ]
     },
     {
       "id": "wiki-location-e3f1b545be9e5c0b31fa",
@@ -9821,15 +11054,23 @@
       "mapMarkers": [
         {
           "code": "P11",
-          "x": 0.6493282828282828,
-          "y": 0.2748422385620915,
-          "kind": "official"
+          "x": 0.649332514149037,
+          "y": 0.273950028396975,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "P25",
       "sourcePageSha256": "409f6c413a1e8182ae786816136266416c59c596709e5c39d250a60269cc8ef6",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "25",
+        "mapPage": 213,
+        "descriptionPage": 220,
+        "numberKey": "P25"
+      }
     },
     {
       "id": "wiki-location-d4b08b186e17efda4240",
@@ -9860,15 +11101,24 @@
       "mapMarkers": [
         {
           "code": "W8",
-          "x": 0.41700511363636367,
-          "y": 0.6586657679738561,
-          "kind": "official"
+          "x": 0.41684725258511796,
+          "y": 0.6580269535325037,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "W22",
       "sourcePageSha256": "d39e735632d1c5ff39c50afa83eba72b408e846e643acb4fb3d3327dd9e423d1",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "22",
+        "mapPage": 277,
+        "descriptionPage": 282,
+        "numberKey": "W22",
+        "note": "На карте книги The XX обозначен №22, а заголовок статьи — №21. Сопоставлено по названию."
+      }
     },
     {
       "id": "wiki-location-e8dd64769e3406beed24",
@@ -9885,15 +11135,23 @@
       "mapMarkers": [
         {
           "code": "U3",
-          "x": 0.6415,
-          "y": 0.5771298202614379,
-          "kind": "official"
+          "x": 0.6408852234766592,
+          "y": 0.575407171135733,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "U16",
       "sourcePageSha256": "dccd10fd9ec3d4b8d0979b8aff6cda134b99220e654ab724bf0b7e95eadfd1b5",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "16",
+        "mapPage": 257,
+        "descriptionPage": 261,
+        "numberKey": "U16"
+      }
     },
     {
       "id": "wiki-location-31f09c7d1db37bb77eaf",
@@ -9924,15 +11182,23 @@
       "mapMarkers": [
         {
           "code": "F9",
-          "x": 0.34844450757575757,
-          "y": 0.4976364379084967,
-          "kind": "official"
+          "x": 0.3509002332076916,
+          "y": 0.49697904412039,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "F19",
       "sourcePageSha256": "87e4c47ecba520deb018643f68ff502ce444a5c61626b9da4dd817494dad2963",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "19",
+        "mapPage": 105,
+        "descriptionPage": 111,
+        "numberKey": "F19"
+      }
     },
     {
       "id": "wiki-location-758777a9f9c355649585",
@@ -9979,15 +11245,23 @@
       "mapMarkers": [
         {
           "code": "O2",
-          "x": 0.495540404040404,
-          "y": 0.3127507352941176,
-          "kind": "official"
+          "x": 0.4977877294276122,
+          "y": 0.31302671002072163,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "O24",
       "sourcePageSha256": "4b1ba02b528f4a3ac6ae72d9a2d2584f8ddb2126c43c1a232325e5ee73009019",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "24",
+        "mapPage": 201,
+        "descriptionPage": 206,
+        "numberKey": "O24"
+      }
     },
     {
       "id": "wiki-location-f1491c41f49af1561a8f",
@@ -10004,15 +11278,23 @@
       "mapMarkers": [
         {
           "code": "U5",
-          "x": 0.6528636363636363,
-          "y": 0.5722278594771242,
-          "kind": "official"
+          "x": 0.6533624465212218,
+          "y": 0.5714789962147627,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "U18",
       "sourcePageSha256": "dccd10fd9ec3d4b8d0979b8aff6cda134b99220e654ab724bf0b7e95eadfd1b5",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "18",
+        "mapPage": 257,
+        "descriptionPage": 261,
+        "numberKey": "U18"
+      }
     },
     {
       "id": "wiki-location-88072186221f1bde4497",
@@ -10034,15 +11316,23 @@
       "mapMarkers": [
         {
           "code": "U4",
-          "x": 0.6238232323232323,
-          "y": 0.5624239379084967,
-          "kind": "official"
+          "x": 0.6254474149786009,
+          "y": 0.5634204572941748,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "U17",
       "sourcePageSha256": "dccd10fd9ec3d4b8d0979b8aff6cda134b99220e654ab724bf0b7e95eadfd1b5",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "17",
+        "mapPage": 257,
+        "descriptionPage": 261,
+        "numberKey": "U17"
+      }
     },
     {
       "id": "wiki-location-ee28582ee98ff3e8c8a4",
@@ -10081,15 +11371,23 @@
       "mapMarkers": [
         {
           "code": "B13",
-          "x": 0.5944041035353536,
-          "y": 0.4168357026143791,
-          "kind": "official"
+          "x": 0.5944287119792868,
+          "y": 0.41322008240197194,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "B40",
       "sourcePageSha256": "af8a9d215973a7908d1a569b7528570ca899bb6f887e1b067447442ca7617db8",
       "descriptionScope": "full_location_section",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "40",
+        "mapPage": 67,
+        "descriptionPage": 77,
+        "numberKey": "B40"
+      }
     },
     {
       "id": "wiki-location-7b351d31cf2bcc7c4c50",
@@ -10120,23 +11418,31 @@
       "mapMarkers": [
         {
           "code": "T3",
-          "x": 0.7523585227272728,
-          "y": 0.4922441993464053,
-          "kind": "official"
+          "x": 0.7528492678235498,
+          "y": 0.4926602715921677,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "T18",
       "sourcePageSha256": "ae87004cd89dbb8bcec65098ce2786f58f80a0aaf7e8ef407a3ba7904bd2f5b4",
       "descriptionScope": "named_sublocation_paragraph",
       "parentWikiId": "wiki-location-e693e3f50fcc0003130a",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "18a",
+        "mapPage": 247,
+        "descriptionPage": 252,
+        "numberKey": "T18a"
+      }
     },
     {
       "id": "wiki-place-814d0af81c892327e86e",
       "name": "Xanadu",
       "district": "Северный Хейвуд",
       "districtLetter": "T",
-      "description": "Xanadu — роллердром и ночной клуб, которым заправляют Музы Вудленд-Парка. Место смешивает ретро-диско с бьющей электроникой. Музы входят в Лигу роллер-дерби Wonderland и регулярно проводят здесь бои.",
+      "description": "Xanadu — роллердром и ночной клуб, которым заправляют Музы Вудленд-Парка. Место смешивает ретро-диско с бьющей электроникой. Музы входят в Лигу роллер-дерби Wonderland и регулярно проводят здесь матчи по роллер-дерби.",
       "sourceUrl": "https://defaulter444.github.io/cyberpunk-wiki/nait-siti/raiony/materik/severnyi-heivud.html#18-woodland-park",
       "sourceCitation": "NC2045, с. 245–254",
       "aliases": [],
@@ -10144,16 +11450,32 @@
       "mapMarkers": [
         {
           "code": "T10",
-          "x": 0.7505909722222222,
-          "y": 0.5004959150326798,
-          "kind": "official"
+          "x": 0.7504709517112402,
+          "y": 0.49974179260198237,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": "T18",
       "sourcePageSha256": "ae87004cd89dbb8bcec65098ce2786f58f80a0aaf7e8ef407a3ba7904bd2f5b4",
       "descriptionScope": "named_sublocation_paragraph",
       "parentWikiId": "wiki-location-e693e3f50fcc0003130a",
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": "18e",
+        "mapPage": 247,
+        "descriptionPage": 252,
+        "numberKey": "T18e",
+        "note": "На карте книги Xanadu обозначен 18e; в тексте Woodland Park — подпункт F. Сопоставлено по названию."
+      },
+      "descriptionCorrections": [
+        {
+          "from": "регулярно проводят здесь бои.",
+          "to": "регулярно проводят здесь матчи по роллер-дерби.",
+          "sourcePage": 252
+        }
+      ]
     },
     {
       "id": "wiki-place-64b20b3a95a8a36d115c",
@@ -10170,16 +11492,24 @@
       "mapMarkers": [
         {
           "code": "W5",
-          "x": 0.24528794191919193,
-          "y": 0.6733716503267974,
-          "kind": "official"
+          "x": 0.24335026153875935,
+          "y": 0.680043869701069,
+          "kind": "official",
+          "coordinateSource": "book-2026"
         }
       ],
       "wikiSectionRef": null,
       "sourcePageSha256": "9fc51960763e490a5a1b736ec8d9bca39b24ccb4e13b82fe457897b166b86efd",
       "descriptionScope": "full_wiki_article_section",
       "parentWikiId": null,
-      "sourceCorrectionUsed": false
+      "sourceCorrectionUsed": false,
+      "bookReference": {
+        "title": "Night City 2045",
+        "mapNumber": null,
+        "mapPage": 277,
+        "descriptionPage": 302,
+        "note": "На карте книги парк подписан названием без номера. Это отдельное место, а не отель Cubeland."
+      }
     }
   ]
 }

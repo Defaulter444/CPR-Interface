@@ -10,6 +10,7 @@ import hashlib
 import json
 from pathlib import Path
 import shutil
+import runpy
 
 
 def sha256(path):
@@ -182,16 +183,22 @@ def build(reference_root, output_root):
         },
         "locations": records,
     }
+    apply_review = runpy.run_path(str(Path(__file__).with_name('apply-book-reference.py')))['apply_book_reference']
+    data = apply_review(data)
     output_path = output_root / "data/locations.json"
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     image_output = output_root / data["map"]["path"]
     image_output.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copyfile(image_path, image_output)
-    if sha256(image_output) != selected_image["sha256"]:
+    shutil.copyfile(image_path, output_root / 'assets/night-city-2045.jpg')
+    reviewed_image = Path(__file__).resolve().parents[1] / data['map']['path']
+    if reviewed_image.resolve() != image_output.resolve():
+        shutil.copyfile(reviewed_image, image_output)
+    reviewed_hash = next(source['sha256'] for source in data['provenance']['sources'] if source.get('role') == 'module_display')
+    if sha256(image_output) != reviewed_hash:
         raise ValueError("Copied image failed SHA-256 verification")
     print(f"Built {len(records)} wiki places, {len(by_map_code)} official markers and {verified_original_count} original-map references.")
-    print(f"Unmapped source places: {len(records) - mapped_count}. Image preserved byte for byte.")
+    print(f"Unmapped source places: {len(records) - mapped_count}. Reviewed book references and clean map applied.")
     return output_path
 
 

@@ -184,25 +184,42 @@ def check_dataset():
             "Named places T3 and T10 must not be merged into Woodland Park")
     require(codes["T9"]["id"] not in (codes["T3"]["id"], codes["T10"]["id"]),
             "Woodland Park must have an independent record")
+    review = load_json(ROOT / 'references/night-city-2045-book.json')
+    require(len(review['locations']) == 156, 'All existing markers need an audited book reference')
+    for entry in review['locations']:
+        location = codes[entry['atlasCode']]
+        require(location['id'] == entry['locationId'], 'Book reference was assigned to a different place')
+        require(location.get('bookReference') == entry['bookReference'], f"Book numbering/page mismatch: {entry['atlasCode']}")
+        marker = location['mapMarkers'][0]
+        require(all(marker.get(key) == entry['position'][key] for key in ('x', 'y')), f"Reviewed book position changed: {entry['atlasCode']}")
+        require(marker.get('coordinateSource') == entry['position']['source'], 'Missing coordinate provenance')
+    require(sum(location['mapMarkers'][0].get('coordinateSource') == 'book-2026' for location in codes.values()) == 154,
+            'Expected 154 unambiguous book map points')
+    require({code for code, location in codes.items() if location['mapMarkers'][0].get('coordinateSource') == 'atlas-2025-area'} == {'F4', 'T9'},
+            'Only the university and Woodland Park retain explicit area references')
+    require(codes['W8']['bookReference']['mapNumber'] == '22' and codes['T10']['bookReference']['mapNumber'] == '18e',
+            'Use the map legend, not the inconsistent prose numbering, for The XX and Xanadu')
     image = data.get("map", {})
     image_file = local_file(image.get("path"))
     expected_hash = next((source.get("sha256") for source in data.get("provenance", {}).get("sources", [])
                           if source.get("role") == "module_display"), None)
-    require(expected_hash == "6c0602bb6daac577da1df745db3792341b3d9e4d1e98efc421c28330dfc9a352",
-            "Bundled display map must retain the image selected by the user")
+    require(expected_hash == review['mapImage']['sha256'], 'Display image must match the reviewed clean basemap')
     require(hashlib.sha256(image_file.read_bytes()).hexdigest() == expected_hash,
             "Bundled display map SHA-256 does not match provenance")
     try:
         from PIL import Image
         with Image.open(image_file) as opened:
-            require(opened.size == (image.get("width"), image.get("height")) == (1200, 1855),
-                    "Selected display image dimensions changed")
+            require(opened.size == (image.get("imageWidth"), image.get("imageHeight")) == (2400, 3710),
+                    "Clean basemap must retain the reviewed 2x pixel resolution")
             opened.verify()
     except ImportError:
         # The checksum protects the exact bytes even without the optional Pillow decoder.
         require((image.get("width"), image.get("height")) == (1200, 1855),
                 "Selected display image metadata dimensions changed")
-    print("PASS: 549 full sourced descriptions; 156 unique bounded official points; numbering distinctions; selected map hash")
+    require((image.get('width'), image.get('height')) == (1200, 1855), 'Keep the logical map size to preserve campaign geometry')
+    require(hashlib.sha256((ROOT / 'assets/night-city-2045.jpg').read_bytes()).hexdigest() == '6c0602bb6daac577da1df745db3792341b3d9e4d1e98efc421c28330dfc9a352',
+            'The original comparison image must remain intact')
+    print("PASS: 549 places; 156 book references; 154 book positions + 2 areas; clean 2x basemap; unchanged logical geometry")
 
 
 def check_reference_descriptions(directory: Path):
@@ -213,7 +230,10 @@ def check_reference_descriptions(directory: Path):
     for source in reference["locations"]:
         exported = by_id.get(source["id"])
         require(exported is not None, f"Wiki location was dropped from the module: {source['id']}")
-        require(exported["description"] == source["description"],
+        expected_description = source['description']
+        for correction in exported.get('descriptionCorrections', []):
+            expected_description = expected_description.replace(correction['from'], correction['to'])
+        require(exported["description"] == expected_description,
                 f"Full wiki section was changed or truncated: {source['id']}")
         require(exported["sourcePageSha256"] == source["source_page_sha256"],
                 f"Wiki page provenance was changed: {source['id']}")
@@ -222,9 +242,12 @@ def check_reference_descriptions(directory: Path):
         exported = next(location for location in locations
                         if any(point["code"] == marker["code"] for point in location["mapMarkers"]))
         if exported["descriptionScope"] != "full_location_section":
-            require(exported["description"] == marker["wiki_description"],
+            expected_description = marker['wiki_description']
+            for correction in exported.get('descriptionCorrections', []):
+                expected_description = expected_description.replace(correction['from'], correction['to'])
+            require(exported["description"] == expected_description,
                     f"Supplementary named place description changed: {marker['code']}")
-    print("PASS: all 546 catalog descriptions and 3 supplementary place descriptions equal their full saved wiki source")
+    print("PASS: all full wiki descriptions retained, allowing only recorded book-verified phrase corrections")
 
 
 if __name__ == "__main__":

@@ -186,7 +186,11 @@ export function projectCity(dataset, state) {
     const patch = state.overrides[original.id];
     if (!patch) return original;
     const output = { ...original, ...patch, campaignEdited: true };
-    if (patch.x !== undefined) output.mapMarkers = [{ x: patch.x, y: patch.y, code: '●', kind: 'campaign' }];
+    if (patch.x !== undefined) {
+      // Keep source codes searchable while clearly identifying a GM-authored position.
+      const markers = original.mapMarkers?.length ? original.mapMarkers : [{ code: '●' }];
+      output.mapMarkers = markers.map(marker => ({ ...marker, x: patch.x, y: patch.y, kind: 'campaign' }));
+    }
     return output;
   });
   for (const p of Object.values(state.places)) locations.push({ ...p, aliases: [], sourceUrl: '', originalMapReferences: [],

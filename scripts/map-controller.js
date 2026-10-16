@@ -38,11 +38,7 @@ export class AtlasMapController {
     for (const [id, pin] of Object.entries(adapters.getCustomPins?.() ?? {})) {
       if (this.byId.has(id) && isValidPin(pin)) this.customPins[id] = { x: pin.x, y: pin.y };
     }
-    this.searchIndex = new Map(this.locations.map(location => [location.id, normalizeSearch([
-      location.name, location.district, ...(location.aliases ?? []),
-      ...(location.originalMapReferences ?? []).flatMap(reference => [reference.number, reference.name]),
-      ...(location.mapMarkers ?? []).map(marker => marker.code)
-    ].join(" "))]));
+    this.rebuildSearchIndex();
     this.state = { query: "", district: "", placedOnly: false, favoritesOnly: false, selectedId: null, placement: false };
     this.view = { scale: 1, x: 0, y: 0 };
     this.nodes = Object.fromEntries(Array.from(root.querySelectorAll("[data-role]")).map(node => [node.dataset.role, node]));
@@ -122,6 +118,15 @@ export class AtlasMapController {
     return pin ? [{ ...pin, code: "◆", kind: "manual" }] : [];
   }
 
+  rebuildSearchIndex() {
+    this.searchIndex = new Map(this.locations.map(location => [location.id, normalizeSearch([
+      location.name, location.district, location.category, location.description, ...(location.aliases ?? []),
+      location.bookReference?.numberKey,
+      ...(location.originalMapReferences ?? []).flatMap(reference => [reference.number, reference.name]),
+      ...this.getMarkers(location).map(marker => marker.code)
+    ].join(" "))]));
+  }
+
   matches(location) {
     if (this.state.district && location.district !== this.state.district) return false;
     if (this.state.placedOnly && this.getMarkers(location).length === 0) return false;
@@ -150,7 +155,11 @@ export class AtlasMapController {
       const meta = element("span", "nc-atlas__location-meta");
       meta.append(element("span", "", location.district));
       const markers = this.getMarkers(location);
-      if (markers.length) meta.append(element("span", `nc-atlas__location-code${markers[0].kind === "manual" ? " is-manual" : ""}`, markers.map(marker => marker.code).join(" · ")));
+      if (markers.length) {
+        const code = element("span", `nc-atlas__location-code${markers[0].kind !== "official" ? " is-manual" : ""}`, markers.map(marker => marker.code).join(" · "));
+        if (markers[0].kind === "campaign") code.title = "Позиция Мастера";
+        meta.append(code);
+      }
       button.append(meta);
       row.append(button);
       const favorite = element("button", "nc-atlas__favorite", this.favoriteIds.has(location.id) ? "★" : "☆");
@@ -178,7 +187,7 @@ export class AtlasMapController {
     const fragment = document.createDocumentFragment();
     for (const location of this.filteredLocations) {
       for (const marker of this.getMarkers(location)) {
-        const button = element("button", `nc-atlas__marker${marker.kind === "manual" ? " is-manual" : ""}`, marker.code);
+        const button = element("button", `nc-atlas__marker${marker.kind !== "official" ? " is-manual" : ""}`, marker.code);
         button.type = "button";
         button.dataset.action = "select";
         button.dataset.locationId = location.id;
@@ -187,8 +196,9 @@ export class AtlasMapController {
         button.style.top = `${marker.y * 100}%`;
         button.classList.toggle("is-selected", this.state.selectedId === location.id);
         button.setAttribute("aria-pressed", String(this.state.selectedId === location.id));
-        button.setAttribute("aria-label", `${location.name}, ${marker.kind === "manual" ? "ваша метка" : `метка ${marker.code}`}`);
-        button.title = `${marker.code} · ${location.name}`;
+        const position = marker.kind === "campaign" ? " · позиция Мастера" : "";
+        button.setAttribute("aria-label", `${location.name}, ${marker.kind === "manual" ? "ваша метка" : `метка ${marker.code}`}${position}`);
+        button.title = `${marker.code} · ${location.name}${position}`;
         fragment.append(button);
       }
     }
@@ -227,9 +237,27 @@ export class AtlasMapController {
     header.append(heading);
     const markers = this.getMarkers(location);
     const badges = element("div", "nc-atlas__badges");
-    badges.append(element("span", `nc-atlas__badge${markers[0]?.kind === "manual" ? " is-manual" : ""}`, markers.length ? (markers[0].kind === "manual" ? "Ваша метка" : `Карта: ${markers.map(marker => marker.code).join(", ")}`) : "Координаты не назначены"));
-    if (location.originalMapReferences?.length) badges.append(element("span", "nc-atlas__badge", `Первая карта: ${location.originalMapReferences.map(reference => reference.number).join(", ")}`));
+    const book = location.bookReference;
+    let markerLabel = "Координаты не назначены";
+    if (markers.length) {
+      markerLabel = markers[0].kind === "manual" ? "Ваша метка" : `${book ? "Атлас 2025" : "Карта"}: ${markers.map(marker => marker.code).join(", ")}`;
+      if (markers[0].kind === "campaign") markerLabel = `${markers[0].code === "●" ? "Метка кампании" : markerLabel} · позиция Мастера`;
+    }
+    badges.append(element("span", `nc-atlas__badge${markers.length && markers[0].kind !== "official" ? " is-manual" : ""}`, markerLabel));
+    if (book) {
+      const reference = [`Книга 2045${book.mapNumber != null ? `: №${book.mapNumber}` : ""}`];
+      if (book.mapPage != null) reference.push(`карта с.${book.mapPage}`);
+      if (book.descriptionPage != null) reference.push(`описание с.${book.descriptionPage}`);
+      badges.append(element("span", "nc-atlas__badge", reference.join(" · ")));
+    }
+    if (!book && location.originalMapReferences?.length) badges.append(element("span", "nc-atlas__badge", `Первая карта: ${location.originalMapReferences.map(reference => reference.number).join(", ")}`));
     header.append(badges);
+    // A campaign override retains provenance metadata, but its position is the GM's.
+    const coordinateSource = markers[0]?.kind === "campaign" ? null : markers[0]?.coordinateSource;
+    const positionSource = coordinateSource === "book-2026" ? "Положение: карта книги 2045"
+      : coordinateSource === "atlas-2025-area" ? "Общая территория: ориентир Атласа 2025" : null;
+    if (positionSource) header.append(element("p", "nc-atlas__aliases nc-atlas__position-source", positionSource));
+    if (book?.note) header.append(element("p", "nc-atlas__aliases", book.note));
     fragment.append(header);
     const actions = element("div", "nc-atlas__detail-actions");
     if (markers.length) actions.append(this.actionButton("locate", "Показать на карте", "fas fa-crosshairs"));
@@ -413,6 +441,22 @@ export class AtlasMapController {
     const location = this.byId.get(this.state.selectedId);
     const marker = location && this.getMarkers(location)[0];
     if (!marker) return;
+    // An explicit reveal must not center a point whose marker is still filtered out.
+    let filtersChanged = false;
+    if (this.state.district && location.district !== this.state.district) {
+      this.state.district = this.nodes.district.value = "";
+      filtersChanged = true;
+    }
+    if (this.state.favoritesOnly && !this.favoriteIds.has(location.id)) {
+      this.state.favoritesOnly = this.nodes["favorites-only"].checked = false;
+      filtersChanged = true;
+    }
+    const terms = normalizeSearch(this.state.query).trim().split(/\s+/).filter(Boolean);
+    if (!terms.every(term => this.searchIndex.get(location.id).includes(term))) {
+      this.state.query = this.nodes.search.value = "";
+      filtersChanged = true;
+    }
+    if (filtersChanged) this.renderResults();
     this.view.scale = Math.max(this.view.scale, 1.05);
     this.view.x = this.nodes.viewport.clientWidth / 2 - marker.x * this.dataset.map.width * this.view.scale;
     this.view.y = this.nodes.viewport.clientHeight / 2 - marker.y * this.dataset.map.height * this.view.scale;
@@ -490,11 +534,7 @@ export class AtlasMapController {
     this.dataset = dataset;
     this.locations = dataset.locations;
     this.byId = new Map(this.locations.map(location => [location.id, location]));
-    this.searchIndex = new Map(this.locations.map(location => [location.id, normalizeSearch([
-      location.name, location.district, location.category, location.description, ...(location.aliases ?? []),
-      ...(location.originalMapReferences ?? []).flatMap(reference => [reference.number, reference.name]),
-      ...this.getMarkers(location).map(marker => marker.code)
-    ].join(" "))]));
+    this.rebuildSearchIndex();
     this.populateDistricts();
     if (![...this.nodes.district.options].some(option => option.value === this.state.district)) this.state.district = "";
     this.nodes.district.value = this.state.district;

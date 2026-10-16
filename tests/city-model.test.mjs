@@ -45,10 +45,21 @@ test('dataset projection preserves reference records and separates campaign coor
   assert.equal(projected.locations.length, 2);
   assert.equal(projected.locations[0].description, 'full text');
   assert.equal(projected.locations[0].mapMarkers[0].kind, 'campaign');
+  assert.equal(projected.locations[0].mapMarkers[0].code, 'A1');
+  assert.deepEqual(projected.locations[0].mapMarkers[0], { code: 'A1', x: 0.4, y: 0.5, kind: 'campaign' });
+  assert.equal(projected.locations[1].mapMarkers[0].code, '●');
   assert.equal(original.name, 'Original'); assert.equal(original.mapMarkers[0].x, 0.1);
   const hidden = apply(state, 'override.save', { id: 'wiki-one', hidden: true });
   assert.equal(projectCity(data, hidden).locations.length, 1);
   assert.equal(projectCity(data, apply(hidden, 'override.reset', { id: 'wiki-one' })).locations[0], original);
+});
+
+test('placing an unlocated reference creates an explicit campaign pin without inventing an official code', () => {
+  const original = { id: 'wiki-one', name: 'Unlocated', mapMarkers: [] };
+  const state = apply(emptyCity(), 'override.save', { id: original.id, x: 0.6, y: 0.7 });
+  const projected = projectCity({ locations: [original] }, state).locations[0];
+  assert.deepEqual(projected.mapMarkers, [{ code: '●', x: 0.6, y: 0.7, kind: 'campaign' }]);
+  assert.deepEqual(original.mapMarkers, []);
 });
 test('image paths reject executable URLs and traversal; text stays plain data', () => {
   for (const image of ['javascript:alert(1)', 'data:image/svg+xml,xxx', '../secret', 'worlds/../secret', '//example.org/x', 'https://user:pass@example.org/x']) assert.throws(() => safeImage(image));

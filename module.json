@@ -2,7 +2,7 @@
   "id": "night-city-2045-atlas",
   "title": "Night City 2045 — Атлас Мастера",
   "description": "Атлас кампании Cyberpunk RED: 549 мест, маршруты и время в пути, метки группы, редактор города и связь с Агентом и Торговлей.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "authors": [
     {
       "name": "Defaulter444",
@@ -30,7 +30,7 @@
   ],
   "url": "https://github.com/Defaulter444/CPR-Interface",
   "manifest": "https://raw.githubusercontent.com/Defaulter444/CPR-Interface/main/module.json",
-  "download": "https://github.com/Defaulter444/CPR-Interface/releases/download/v0.2.0/night-city-2045-atlas-0.2.0.zip",
+  "download": "https://github.com/Defaulter444/CPR-Interface/releases/download/v0.2.1/night-city-2045-atlas-0.2.1.zip",
   "readme": "https://github.com/Defaulter444/CPR-Interface/blob/main/README.md",
   "bugs": "https://github.com/Defaulter444/CPR-Interface/issues",
   "changelog": "https://github.com/Defaulter444/CPR-Interface/blob/main/CHANGELOG.md",
