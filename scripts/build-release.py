@@ -12,7 +12,7 @@ version = manifest['version']
 module_id = manifest['id']
 assert json.loads((ROOT / 'package.json').read_text())['version'] == version
 files = ['module.json', 'README.md', 'CHANGELOG.md', 'LICENSE', 'NOTICE.md']
-files += [str(path.relative_to(ROOT)) for folder in ('scripts', 'styles', 'templates', 'data', 'assets')
+files += [path.relative_to(ROOT).as_posix() for folder in ('scripts', 'styles', 'templates', 'data', 'assets')
           for path in sorted((ROOT / folder).rglob('*'))
           if path.is_file() and path.suffix in ('.js', '.css', '.hbs', '.json', '.jpg', '.webp', '.png', '.svg')]
 assert 'scripts/main.js' in files and 'data/locations.json' in files

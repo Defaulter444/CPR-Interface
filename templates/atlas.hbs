@@ -1,11 +1,14 @@
 <section class="nc-atlas" aria-label="Атлас Найт-Сити 2045">
   <header class="nc-atlas__header">
     <div class="nc-atlas__identity">
-      <span class="nc-atlas__eyebrow">ИНТЕРФЕЙС МАСТЕРА · 2045</span>
+      <span class="nc-atlas__eyebrow">ГОРОД · 2045</span>
       <h1>NIGHT CITY <span>ATLAS</span></h1>
     </div>
     <div class="nc-atlas__summary" data-role="summary">Загрузка атласа…</div>
+    <button type="button" class="nc-atlas__city-toggle" data-city-action="toggle" aria-expanded="false"><i class="fas fa-sliders" aria-hidden="true"></i> Город</button>
   </header>
+
+  <section class="nc-city" data-role="city-tools" aria-label="Инструменты города" hidden></section>
 
   <div class="nc-atlas__layout">
     <aside class="nc-atlas__catalogue" aria-label="Каталог локаций">
@@ -63,6 +66,6 @@
 
   <footer class="nc-atlas__footer">
     <span data-role="status" role="status" aria-live="polite">Перетаскивайте карту · колёсико меняет масштаб</span>
-    <span class="nc-atlas__footer-badge">ТОЛЬКО ДЛЯ МАСТЕРА</span>
+    <span class="nc-atlas__footer-badge">ОБЩАЯ КАРТА ГОРОДА</span>
   </footer>
 </section>

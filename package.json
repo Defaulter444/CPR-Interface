@@ -1,6 +1,6 @@
 {
   "name": "night-city-2045-atlas",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,5 +9,7 @@
     "check": "python3 scripts/check-package.py",
     "build": "python3 scripts/build-release.py"
   },
-  "devDependencies": { "handlebars": "4.7.8" }
+  "devDependencies": {
+    "handlebars": "4.7.10"
+  }
 }

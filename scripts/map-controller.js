@@ -64,6 +64,10 @@ export class AtlasMapController {
   }
 
   populateDistricts() {
+    this.nodes.district.replaceChildren();
+    const all = element("option", "", "Все районы");
+    all.value = "";
+    this.nodes.district.append(all);
     const districts = [...new Set(this.locations.map(location => location.district).filter(Boolean))]
       .sort((a, b) => a.localeCompare(b, "ru"));
     for (const name of districts) {
@@ -109,7 +113,10 @@ export class AtlasMapController {
   }
 
   getMarkers(location) {
-    const official = (location.mapMarkers ?? []).filter(isValidPin).map(marker => ({ ...marker, kind: "official" }));
+    const projected = this.dataset.mapMarkers;
+    const replacement = Array.isArray(projected) ? projected.filter(marker => marker.locationId === location.id)
+      : projected?.[location.id];
+    const official = (replacement ?? location.mapMarkers ?? []).filter(isValidPin).map(marker => ({ ...marker, kind: marker.kind ?? "official" }));
     if (official.length) return official;
     const pin = this.customPins[location.id];
     return pin ? [{ ...pin, code: "◆", kind: "manual" }] : [];
@@ -197,11 +204,15 @@ export class AtlasMapController {
     if (center) this.locateSelected();
     const location = this.byId.get(id);
     this.setStatus(`${location.name} · ${location.district}`);
+    this.adapters.onSelect?.(location);
   }
 
   renderDetails() {
     const location = this.byId.get(this.state.selectedId);
-    if (!location) return;
+    if (!location) {
+      this.nodes.detail.replaceChildren(element("p", "nc-atlas__no-results", "Выберите место в каталоге или на карте."));
+      return;
+    }
     const fragment = document.createDocumentFragment();
     const header = element("div", "nc-atlas__detail-header");
     header.append(element("span", "nc-atlas__eyebrow", location.district));
@@ -222,8 +233,8 @@ export class AtlasMapController {
     fragment.append(header);
     const actions = element("div", "nc-atlas__detail-actions");
     if (markers.length) actions.append(this.actionButton("locate", "Показать на карте", "fas fa-crosshairs"));
-    if (!(location.mapMarkers ?? []).filter(isValidPin).length) actions.append(this.actionButton("place", this.customPins[location.id] ? "Переместить метку" : "Поставить метку", "fas fa-map-pin"));
-    if (this.customPins[location.id] && !(location.mapMarkers ?? []).filter(isValidPin).length) actions.append(this.actionButton("clear-pin", "Убрать свою метку", "fas fa-trash-can"));
+    if ((!this.adapters.isGM || this.adapters.isGM()) && !(location.mapMarkers ?? []).filter(isValidPin).length) actions.append(this.actionButton("place", this.customPins[location.id] ? "Переместить метку" : "Поставить метку", "fas fa-map-pin"));
+    if ((!this.adapters.isGM || this.adapters.isGM()) && this.customPins[location.id] && !(location.mapMarkers ?? []).filter(isValidPin).length) actions.append(this.actionButton("clear-pin", "Убрать свою метку", "fas fa-trash-can"));
     fragment.append(actions);
     const description = element("div", "nc-atlas__description", location.description || "Описание для этой локации пока отсутствует в источнике.");
     fragment.append(description);
@@ -239,8 +250,9 @@ export class AtlasMapController {
       link.rel = "noopener noreferrer";
       citation.append(link);
     }
-    fragment.append(citation);
+    if (location.sourceCitation || url) fragment.append(citation);
     this.nodes.detail.replaceChildren(fragment);
+    this.adapters.decorateDetails?.(location, this.nodes.detail);
   }
 
   actionButton(action, text, icon) {
@@ -259,7 +271,7 @@ export class AtlasMapController {
   }
 
   async toggleFavorite(id) {
-    if (!this.canWrite() || !this.byId.has(id) || this.favoriteSaving) return;
+    if (!this.byId.has(id) || this.favoriteSaving) return;
     const next = new Set(this.favoriteIds);
     if (next.has(id)) next.delete(id); else next.add(id);
     this.favoriteSaving = true;
@@ -433,12 +445,14 @@ export class AtlasMapController {
     if (!this.drag || this.drag.id !== event.pointerId) return;
     const moved = this.drag.moved;
     this.cancelDrag();
-    if (this.state.placement && !moved) {
+    if (!moved) {
       const rect = this.nodes.viewport.getBoundingClientRect();
       const x = (event.clientX - rect.left - this.view.x) / (this.view.scale * this.dataset.map.width);
       const y = (event.clientY - rect.top - this.view.y) / (this.view.scale * this.dataset.map.height);
-      if (isValidPin({ x, y })) void this.placeSelected(x, y);
-      else this.setStatus("Щёлкните внутри изображения карты, чтобы поставить метку.");
+      if (isValidPin({ x, y })) {
+        if (this.adapters.onMapClick?.({ x, y }) === true) return;
+        if (this.state.placement) void this.placeSelected(x, y);
+      } else if (this.state.placement) this.setStatus("Щёлкните внутри изображения карты, чтобы поставить метку.");
     }
   }
 
@@ -471,6 +485,30 @@ export class AtlasMapController {
   }
 
   /** Snapshot useful to integrations and browser tests; mutation stays behind the controller methods. */
+  replaceDataset(dataset) {
+    if (this.destroyed || !Array.isArray(dataset?.locations)) return;
+    this.dataset = dataset;
+    this.locations = dataset.locations;
+    this.byId = new Map(this.locations.map(location => [location.id, location]));
+    this.searchIndex = new Map(this.locations.map(location => [location.id, normalizeSearch([
+      location.name, location.district, location.category, location.description, ...(location.aliases ?? []),
+      ...(location.originalMapReferences ?? []).flatMap(reference => [reference.number, reference.name]),
+      ...this.getMarkers(location).map(marker => marker.code)
+    ].join(" "))]));
+    this.populateDistricts();
+    if (![...this.nodes.district.options].some(option => option.value === this.state.district)) this.state.district = "";
+    this.nodes.district.value = this.state.district;
+    if (!this.byId.has(this.state.selectedId)) this.state.selectedId = null;
+    this.nodes.stage.style.width = `${dataset.map.width}px`;
+    this.nodes.stage.style.height = `${dataset.map.height}px`;
+    const source = `${this.adapters.assetBase ?? ""}${dataset.map.path}`;
+    if (this.nodes["map-image"].getAttribute("src") !== source) this.nodes["map-image"].src = source;
+    this.renderResults();
+    this.renderDetails();
+    this.updateSummary();
+    this.applyView();
+  }
+
   getState() {
     return { ...this.state, view: { ...this.view }, favorites: [...this.favoriteIds], customPins: structuredClone(this.customPins), filteredIds: this.filteredLocations.map(location => location.id) };
   }

@@ -9,6 +9,7 @@ const applications = [];
 const moduleRecord = {};
 let fetchCalls = 0;
 let fetchFails = false;
+let playerAccess = false;
 
 class MockApplication {
   static get defaultOptions() { return { classes: [] }; }
@@ -50,7 +51,7 @@ Object.assign(globalThis, {
     settings: {
       register(moduleId, name, definition) { registeredSettings.set(name, { moduleId, ...definition }); },
       registerMenu(moduleId, name, definition) { registeredMenus.set(name, { moduleId, ...definition }); },
-      get() { return undefined; },
+      get(_module, name) { return name === 'playerAccess' ? playerAccess : undefined; },
       async set(_module, _name, value) { return value; },
     },
     i18n: { localize: text => text },
@@ -72,7 +73,7 @@ Object.assign(globalThis, {
 
 const module = await import("../scripts/main.js");
 
-test("actual entry registers only GM-facing settings and an explicit menu", async () => {
+test("entry registers personal preferences, public city and default-off player access", async () => {
   assert.equal(module.MODULE_ID, "night-city-2045-atlas");
   assert.equal(typeof module.openAtlas, "function");
   assert.ok(hookHandlers.has("init"));
@@ -93,6 +94,9 @@ test("actual entry registers only GM-facing settings and an explicit menu", asyn
   assert.equal(menu.moduleId, module.MODULE_ID);
   assert.ok(menu.type.prototype instanceof FormApplication);
   assert.equal(applications.length, 0, "Init must not open the atlas automatically");
+  assert.equal(registeredSettings.get('playerAccess').default, false);
+  assert.equal(registeredSettings.get('cityState').scope, 'world');
+  assert.equal(registeredSettings.get('importBackup').scope, 'client');
 });
 
 test("scene control is added for a GM and omitted for a player", async () => {
@@ -118,10 +122,11 @@ test("scene control is added for a GM and omitted for a player", async () => {
   game.user.isGM = true;
 });
 
-test("public API and direct opener reject non-GM access without constructing an application", async () => {
+test("public API rejects non-GM access by default without constructing an application", async () => {
   game.user.isGM = false;
   await hookHandlers.get("ready")();
-  assert.equal(moduleRecord.api, undefined, "A player's ready hook must not expose the GM atlas API");
+  assert.equal(moduleRecord.api.canOpen(), false);
+  assert.deepEqual(await moduleRecord.api.listLocations(), []);
   game.user.isGM = true;
   await hookHandlers.get("ready")();
   assert.equal(moduleRecord.api.open, module.openAtlas);
@@ -164,4 +169,17 @@ test("GM opener renders and reuses one application; menu uses the same entry", a
   assert.equal(menu.render(true), menu);
   await new Promise(resolve => setTimeout(resolve, 0));
   assert.equal(first.renderCalls.length, before + 1);
+});
+
+test('opted-in player gets scene entry and can open; turning access off closes the gate', async () => {
+  game.user.isGM = false; playerAccess = true;
+  const controls = [{ name: 'notes', tools: [] }];
+  hookHandlers.get('getSceneControlButtons')(controls);
+  assert.ok(controls[0].tools.some(t => t.name === 'nightCityAtlas'));
+  assert.equal(moduleRecord.api.canOpen(), true);
+  assert.ok(await module.openAtlas());
+  playerAccess = false;
+  assert.equal(moduleRecord.api.canOpen(), false);
+  assert.equal(await module.openAtlas(), null);
+  game.user.isGM = true;
 });

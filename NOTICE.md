@@ -1,5 +1,7 @@
 # Attribution and third-party materials
 
+The campaign-map features in 0.2.0 were independently implemented after reviewing the functional ideas of [Night City Map 0.15.0](https://github.com/samroaleksej-bit/night-city-map/tree/v0.15.0), credited there to Verlierboy / Circle of Masters. No code, prose, artwork, map, road grid or NPC compendium from that project is included. The reviewed tag did not contain an explicit redistribution license. This acknowledgement is not a claim of affiliation.
+
 This is an unofficial Foundry Virtual Tabletop module for a Night City 2045 campaign. It is not affiliated with or endorsed by R. Talsorian Games or Foundry Gaming LLC.
 
 Cyberpunk RED, Night City, and associated names and setting materials belong to their respective rights holders. The included map, `assets/night-city-2045.jpg`, displays © 2025 R. Talsorian Games. Its original credit remains visible and the image is preserved byte for byte. The map is third-party content and is **not** licensed under this repository's MIT software license.
