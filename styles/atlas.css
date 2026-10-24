@@ -235,3 +235,17 @@
 #night-city-2045-atlas .nc-atlas :is(.nc-city__button[aria-pressed="true"],.nc-city__button.is-active,.nc-atlas__city-toggle[aria-expanded="true"]) { background:#1c3239; color:#8fdce4; border-color:#8fdce4; }
 #night-city-2045-atlas .nc-atlas .nc-city__button.is-primary { background:#321b23; color:#ff9ca8; border-color:#f3485d; }
 @media (max-height:760px) { .nc-atlas .nc-city { max-height:240px; } }
+
+/* Night mode: the city goes dark after 21:00, markers, routes and labels stay lit. */
+.nc-atlas__viewport.is-night .nc-atlas__map-image { filter: brightness(.48) saturate(.75) hue-rotate(-12deg) contrast(1.08); transition: filter .6s ease; }
+.nc-atlas__viewport .nc-atlas__map-image { transition: filter .6s ease; }
+
+/* Street encounter card */
+.nc-city__encounter { display: grid; gap: 6px; }
+.nc-city__encounter-meta { color: var(--nc-cyan, #6fd3e0); font-size: 11px; letter-spacing: .04em; text-transform: uppercase; }
+.nc-city__encounter-stats { color: #d9c18a; margin: 0; }
+.nc-city__encounter-twist { color: #f28b95; margin: 0; }
+.nc-atlas-encounter__meta { margin: 0 0 4px; font-size: 11px; opacity: .8; text-transform: uppercase; letter-spacing: .04em; }
+.nc-city__body > .nc-city__encounter { flex: 1 1 100%; margin-top: 0; border-left: 3px solid #e8434f; padding: 10px 12px; }
+.nc-city__encounter strong { font-size: 15px; }
+.nc-city__encounter p { margin: 0; }

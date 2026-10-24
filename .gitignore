@@ -6,3 +6,6 @@ test-results/
 .env
 .env.*
 !.env.example
+packs/**/LOCK
+packs/**/LOG
+packs/**/LOG.old

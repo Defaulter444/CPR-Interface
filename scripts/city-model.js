@@ -52,8 +52,14 @@ function market(value) {
   if (!['bodega', 'diner', 'vendit'].includes(value.part)) throw Error('Неизвестный тип торговой точки.');
   return { part: value.part, id: cityId(value.id) };
 }
+/** A Foundry Scene id for the place's battle map; '' clears the link. The scene itself is never copied into city data. */
+function sceneId(value) {
+  if (value === '' || value === null) return '';
+  if (typeof value !== 'string' || !/^[A-Za-z0-9]{1,64}$/.test(value)) throw Error('Сцена места: некорректный идентификатор.');
+  return value;
+}
 function place(value, partial = false) {
-  keys(value, ['id', 'name', 'description', 'district', 'category', 'image', 'x', 'y', 'protected', 'market', ...(partial ? ['hidden'] : [])], 'Место');
+  keys(value, ['id', 'name', 'description', 'district', 'category', 'image', 'x', 'y', 'protected', 'market', 'scene', ...(partial ? ['hidden'] : [])], 'Место');
   const result = { id: cityId(value.id) };
   for (const [key, max] of Object.entries({ name: 160, description: 12000, district: 160, category: 80 })) {
     if (value[key] !== undefined) result[key] = string(value[key], max, key, key === 'name');
@@ -65,6 +71,7 @@ function place(value, partial = false) {
   if (value.protected !== undefined) result.protected = bool(value.protected);
   if (value.hidden !== undefined) result.hidden = bool(value.hidden);
   if (value.market !== undefined) result.market = market(value.market);
+  if (value.scene !== undefined) result.scene = sceneId(value.scene);
   return result;
 }
 function list(value, max, label, validate) {

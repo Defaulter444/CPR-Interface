@@ -1,8 +1,11 @@
 import { routeMetrics, shortestRoadRoute } from './routes.js';
+import { THREAT_LABELS, isNightHour, maxThreat, rollGig, rollStreetEncounter, threatAt } from './street-life.js';
 
 const MODES=[['walk','Пешком'],['bike','Велосипед'],['car','Автомобиль'],['av','Аэродин']];
 const THREATS=[['moderate','Умеренная'],['combat','Боевая'],['hot','Горячая']];
 const TIMES=[['any','Любое время'],['day','День'],['night','Ночь']];
+const ROLL_THREATS=[['any','По месту на карте'],['safe','Корпоративная'],...THREATS];
+const ROLL_TIMES=[['any','По игровым часам'],['day','День'],['night','Ночь']];
 const SVG='http://www.w3.org/2000/svg';
 const pointOK=p=>p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&p.x>=0&&p.x<=1&&p.y>=0&&p.y<=1;
 const copyPoint=p=>({x:p.x,y:p.y});
@@ -12,7 +15,7 @@ const svg=(tag,attrs)=>{const n=document.createElementNS(SVG,tag);for(const[k,v]
 const JOB_LABELS=Object.freeze({planned:'Запланировано',active:'В работе',blocked:'Приостановлено',done:'Завершено',archived:'Архив'});
 export const jobStatusLabel=status=>Object.hasOwn(JOB_LABELS,status)?JOB_LABELS[status]:'Неизвестный статус';
 const placeSnapshot=d=>{
-  const record={name:String(d.name??'').trim(),description:d.description??'',district:d.district??'',category:d.category??'',image:d.image??'',protected:Boolean(d.protected),market:d.market??null};
+  const record={name:String(d.name??'').trim(),description:d.description??'',district:d.district??'',category:d.category??'',image:d.image??'',protected:Boolean(d.protected),market:d.market??null,scene:d.scene??''};
   if(d.id)record.id=d.id;if(d.x!==''&&d.x!=null&&d.y!==''&&d.y!=null){record.x=Number(d.x);record.y=Number(d.y);}return record;
 };
 /** Preserve reference text and concurrent unrelated edits by sending only changed fields. */
@@ -47,7 +50,7 @@ export class CityControls{
     this.panel=root.querySelector('[data-role="city-tools"]');
     if(!this.panel){this.panel=el('section','nc-city');this.panel.dataset.role='city-tools';root.querySelector('.nc-atlas__header')?.after(this.panel);}
     this.open=false;this.tab='route';this.clickMode=null;this.anchor=null;this.route=[];this.mode='walk';this.followRoads=false;this.busy=false;this.message='';this.openSections=new Set();
-    this.placeDraft=null;this.zoneDraft={name:'Зона',threat:'moderate'};this.encounterDraft={title:'',text:'',threat:'moderate',time:'any'};this.previewFilter={threat:'any',time:'any'};
+    this.placeDraft=null;this.zoneDraft={name:'Зона',threat:'moderate'};this.encounterDraft={title:'',text:'',threat:'moderate',time:'any'};this.previewFilter={threat:'any',time:'any',book:true};
     this.overlay=svg('svg',{class:'nc-city__overlay','aria-hidden':'true',preserveAspectRatio:'none'});
     this.positions=el('div','nc-city__positions');this.positions.setAttribute('aria-hidden','true');this.map.nodes.stage.append(this.overlay,this.positions);
     this.previousHooks={onSelect:this.map.adapters.onSelect,onMapClick:this.map.adapters.onMapClick,decorateDetails:this.map.adapters.decorateDetails};
@@ -62,7 +65,29 @@ export class CityControls{
   isGM(){return Boolean(this.adapters.isGM?.());}
   update(view){
     if(this.destroyed)return;this.state=view?.state??(view?.schemaVersion?view:null)??this.adapters.getState?.()??{};this.positionSnapshot=view?.positions??null;
-    if(!this.isGM()&&this.tab==='gm')this.tab='route';this.render();this.renderOverlay();
+    if(!this.isGM()&&this.tab==='gm')this.tab='route';this.render();this.renderOverlay();this.updateNight();
+  }
+  hour(){try{const hour=this.adapters.clockHour?.();return Number.isFinite(hour)?hour:null;}catch{return null;}}
+  night(){return isNightHour(this.hour());}
+  updateNight(){const on=Boolean(this.adapters.nightMode?.())&&this.night();this.map.nodes.viewport.classList.toggle('is-night',on);}
+  /** District of the nearest place marker: gangs and default threat follow it. */
+  districtNear(point){let best=Infinity,district='';for(const location of this.map.dataset.locations??[])for(const marker of location.mapMarkers??[]){if(!pointOK(marker))continue;const d=Math.hypot(marker.x-point.x,marker.y-point.y);if(d<best&&location.district){best=d;district=location.district;}}return district;}
+  rollEncounter({point=null,district='',threat}={}){
+    const filter=this.previewFilter,where=point??this.state.crew??null,place=district||(where?this.districtNear(where):'');
+    const level=threat??(filter.threat!=='any'?filter.threat:threatAt(where,{zones:this.state.zones??[],district:place}));
+    const night=filter.time==='any'?this.night():filter.time==='night';
+    this.encounterPreview=rollStreetEncounter({threat:level,night,district:place,authored:this.state.encounters??[],useBook:filter.book!==false,players:this.adapters.crewSize?.()??1});
+    this.open=true;this.tab='gm';this.openSections.add('Встречи');this.panel.querySelector('details[data-city-section="Встречи"]')?.setAttribute('open','');
+    this.setMessage(this.encounterPreview?'Встреча готова: покажите её или выставьте участников на сцену.':'Под выбранные условия нет авторских встреч. Включите книжные таблицы.');this.render();this.panel.querySelector('.nc-city__body')?.scrollTo?.({top:0});
+  }
+  renderEncounter(){
+    const e=this.encounterPreview,card=el('div','nc-city__preview nc-city__encounter');if(!e)return card;
+    const meta=[e.roll?`${e.threat==='combat'?'к6+4':e.threat==='hot'||e.threat==='safe'?'к6':'к10'}: ${e.roll}`:'своя встреча',THREAT_LABELS[e.threat],e.night?'ночь':'день',e.district,e.gang&&e.gang!=='местная банда'?`банда: ${e.gang}`:''].filter(Boolean).join(' · ');
+    card.append(el('span','nc-city__encounter-meta',meta),el('strong','',e.title),el('p','',e.text));
+    if(e.stats&&e.stats!=='—')card.append(el('p','nc-city__encounter-stats',`Статы: ${e.stats}`));if(e.twist)card.append(el('p','nc-city__encounter-twist',`Поворот (к6: ${e.twistRoll}): ${e.twist}`));
+    if(e.cast?.length)card.append(el('p','nc-city__note',`На сцену: ${e.cast.map(c=>`${c.name}${c.count>1?` ×${c.count}`:''}`).join(', ')}`));
+    card.append(this.row(this.button('encounter-roll','Ещё раз'),this.button('encounter-gm','Мастеру в чат',{disabled:!this.adapters.postEncounter}),this.button('encounter-reveal','Показать игрокам',{disabled:!this.adapters.postEncounter}),this.button('encounter-spawn','На сцену',{kind:'is-primary',disabled:!this.adapters.spawnEncounter||(!e.cast?.length&&!e.mooks?.length)})));
+    return card;
   }
   button(action,label,{id,title,disabled=false,kind=''}={}){
     const b=el('button',`nc-city__button ${kind}`,label);b.type='button';b.dataset.cityAction=action;if(id!==undefined)b.dataset.id=String(id);if(title)b.title=title;b.disabled=disabled||this.busy;return b;
@@ -117,7 +142,7 @@ export class CityControls{
     for(const warning of[...route.warnings,...(metrics.warnings??[])])controls.append(this.note(typeof warning==='string'?warning:warning.message??warning.name??'Маршрут пересекает зону угрозы.'));
     controls.append(this.note('Расстояние и время приблизительные. Дороги задаёт Мастер; расчёт не учитывает пробки.'));
     const actions=this.section('Позиции и общий маршрут');actions.append(this.row(this.button('personal','Моя метка',{kind:this.clickMode==='personal'?'is-active':''}),this.button('personal-clear','Убрать мою метку'),this.button('shared-copy','Взять общий маршрут',{disabled:!this.state.sharedRoute?.points?.length})));
-    if(this.isGM())actions.append(this.row(this.button('crew','Поставить группу',{kind:this.clickMode==='crew'?'is-active':''}),this.button('publish','Показать маршрут всем',{disabled:!route.valid||route.points.length<2}),this.button('unpublish','Скрыть общий маршрут',{disabled:!this.state.sharedRoute?.points?.length}),this.button('travel','Переместить группу и время…',{disabled:!route.valid||route.points.length<2,kind:'is-primary'})));
+    if(this.isGM())actions.append(this.row(this.button('crew','Поставить группу',{kind:this.clickMode==='crew'?'is-active':''}),this.button('publish','Показать маршрут всем',{disabled:!route.valid||route.points.length<2}),this.button('unpublish','Скрыть общий маршрут',{disabled:!this.state.sharedRoute?.points?.length}),this.button('travel','Переместить группу и время…',{disabled:!route.valid||route.points.length<2,kind:'is-primary'}),this.button('route-encounter','Встреча в пути',{disabled:route.points.length<2})));
     actions.append(this.row(this.button('agent-map','Карта в Агенте',{disabled:!this.adapters.openAgent}),this.button('agent-jobs','Задания в Агенте',{disabled:!this.adapters.openAgent})),this.note('Общие данные города доступны участникам. Личный план публикуется только отдельной командой Мастера.'));body.append(controls,actions);
   }
   renderPlaces(body){
@@ -129,7 +154,10 @@ export class CityControls{
       grid.append(this.field('Название','name',d.name),this.field('Район','district',d.district),this.field('Категория','category',d.category),this.field('Описание','description',d.description,{type:'textarea',wide:true}),this.field('Изображение','image',d.image,{wide:true}),this.field('X · 0…1','x',d.x,{type:'number',min:0,max:1,step:.0001}),this.field('Y · 0…1','y',d.y,{type:'number',min:0,max:1,step:.0001}),this.field('Защитить от удаления','protected',d.protected,{type:'checkbox'}));
       let shops=[];try{shops=this.adapters.listShops?.()??[];}catch{}
       const choices=[['','Без торговой точки'],...shops.map(s=>[`${s.part}:${s.id}`,s.name])];if(d.market&&!choices.some(([key])=>key===`${d.market.part}:${d.market.id}`))choices.push([`${d.market.part}:${d.market.id}`,'Сохранённая связь (точка недоступна)']);
-      grid.append(this.field('Торговая точка','market',d.market?`${d.market.part}:${d.market.id}`:'',{choices,wide:true}));editor.append(grid);
+      grid.append(this.field('Торговая точка','market',d.market?`${d.market.part}:${d.market.id}`:'',{choices,wide:true}));
+      let scenes=[];try{scenes=this.adapters.listScenes?.()??[];}catch{}
+      const sceneChoices=[['','Без сцены'],...scenes.map(s=>[s.id,s.name])];if(d.scene&&!sceneChoices.some(([key])=>key===d.scene))sceneChoices.push([d.scene,'Сохранённая сцена (удалена)']);
+      grid.append(this.field('Сцена места (боевая карта)','scene',d.scene??'',{choices:sceneChoices,wide:true}));editor.append(grid);
       editor.append(this.row(this.button('place-position','Координаты на карте',{kind:this.clickMode==='place'?'is-active':''}),this.button('pick-image','Выбрать изображение',{disabled:!this.adapters.pickImage}),this.button('save-place','Сохранить место',{kind:'is-primary'}),this.button('cancel-place','Отмена')));
       if(d.id){if(d.isBase)editor.append(this.row(this.button('hide-place','Скрыть базовое место',{disabled:d.protected}),this.button('reset-place','Восстановить исходное')));else editor.append(this.row(this.button('remove-place','Удалить своё место',{disabled:d.protected})));}info.append(editor);
     }
@@ -146,14 +174,15 @@ export class CityControls{
     const config=this.details('Масштаб и скорости'),settings=this.configDraft??this.state.config??{},grid=el('div','nc-city__grid');
     grid.append(this.field('Ширина карты, км','widthKm',settings.widthKm??20,{scope:'config',type:'number',min:.01,step:.1}));
     for(const[id,label]of MODES)grid.append(this.field(`${label}, км/ч`,id,settings.speeds?.[id]??({walk:5,bike:18,car:35,av:100}[id]),{scope:'config',type:'number',min:.1,step:.1}));config.append(grid,this.button('config-save','Сохранить масштаб'));
-    const encounters=this.details(`Авторские встречи · ${(this.state.encounters??[]).length}`),e=this.encounterDraft,form=el('div','nc-city__grid');
+    const encounters=this.details(`Встречи · своих ${(this.state.encounters??[]).length}`),e=this.encounterDraft,form=el('div','nc-city__grid');
     form.append(this.field('Название встречи','title',e.title,{scope:'encounter'}),this.field('Угроза','threat',e.threat,{scope:'encounter',choices:[['any','Любая угроза'],...THREATS]}),this.field('Время','time',e.time,{scope:'encounter',choices:TIMES}),this.field('Описание','text',e.text,{scope:'encounter',type:'textarea',wide:true}));
     encounters.append(form,this.row(this.button('encounter-save',e.id?'Сохранить встречу':'Добавить встречу'),this.button('encounter-new','Очистить форму')));
     for(const entry of this.state.encounters??[])encounters.append(this.row(el('span','nc-city__item-name',entry.title),this.button('encounter-edit','Изменить',{id:entry.id}),this.button('encounter-remove','Удалить',{id:entry.id})));
-    encounters.append(this.row(this.field('Фильтр угрозы','threat',this.previewFilter.threat,{scope:'preview',choices:[['any','Любая угроза'],...THREATS]}),this.field('Фильтр времени','time',this.previewFilter.time,{scope:'preview',choices:TIMES}),this.button('encounter-roll','Случайная встреча')));
-    if(this.encounterPreview){const preview=el('div','nc-city__preview');preview.append(el('strong','',this.encounterPreview.title),el('p','',this.encounterPreview.text));encounters.append(preview);}encounters.append(this.note('Только предпросмотр авторского текста. Акторы, токены и сообщения автоматически не создаются.'));
+    encounters.append(this.row(this.field('Угроза','threat',this.previewFilter.threat,{scope:'preview',choices:ROLL_THREATS}),this.field('Время','time',this.previewFilter.time,{scope:'preview',choices:ROLL_TIMES}),this.field('Книжные таблицы (Корка)','book',this.previewFilter.book!==false,{scope:'preview',type:'checkbox'}),this.button('encounter-roll','Случайная встреча',{kind:'is-primary'})));
+    encounters.append(this.note('Угроза «по месту» берётся из зон Мастера, иначе из района ближайшего места к группе. Свои встречи смешиваются с книжными; «На сцену» выставляет скрытые токены из компендиума «Найт-Сити · персонажи» (или Night City Gang & Corp Mook Pack, если он установлен).'));
     const transfer=this.details('Экспорт и импорт города');transfer.append(this.note('Общие данные города доступны участникам. Импорт проходит проверку и подтверждение Мастера.'),this.row(this.button('export','Экспорт JSON',{disabled:!this.adapters.exportData}),this.button('import','Импорт JSON…',{disabled:!this.adapters.importData})));
-    const input=el('input');input.type='file';input.accept='.json,application/json';input.hidden=true;input.dataset.cityImport='';transfer.append(input);body.append(roads,zones,config,encounters,transfer);
+    const input=el('input');input.type='file';input.accept='.json,application/json';input.hidden=true;input.dataset.cityImport='';transfer.append(input);
+    if(this.encounterPreview)body.append(this.renderEncounter());body.append(roads,zones,config,encounters,transfer);
   }
   handleField(event){
     const input=event.target.closest('[data-city-field]');if(!input||!this.root.contains(input))return;
@@ -215,7 +244,13 @@ export class CityControls{
     else if(action==='encounter-new'){this.encounterDraft={title:'',text:'',threat:'moderate',time:'any'};this.render();}
     else if(action==='encounter-edit'){const e=(this.state.encounters??[]).find(e=>e.id===id);if(e){this.encounterDraft={...e};this.render();}}
     else if(action==='encounter-remove')void this.command('encounters.set',{encounters:(this.state.encounters??[]).filter(e=>e.id!==id)},'Встреча удалена.');
-    else if(action==='encounter-roll'){this.encounterPreview=chooseEncounter(this.state.encounters,this.previewFilter);this.setMessage(this.encounterPreview?'Предпросмотр: документы не создаются.':'Под выбранные условия нет авторских встреч.');this.render();}
+    else if(action==='encounter-roll')this.rollEncounter();
+    else if(action==='encounter-here'){const location=this.map.byId.get(id),p=location&&this.map.getMarkers(location)[0];if(p)this.rollEncounter({point:p,district:location.district??''});else this.setMessage('У места нет точки на карте.');}
+    else if(action==='route-encounter'){const route=this.resolvedRoute(),points=route.points.filter(pointOK);if(points.length<2){this.setMessage('Сначала составьте маршрут.');return;}const step=Math.max(1,Math.floor(points.length/24)),samples=points.filter((_,i)=>i%step===0).concat(points.at(-1));const end=points.at(-1),district=this.districtNear(end);const threat=this.previewFilter.threat!=='any'?this.previewFilter.threat:maxThreat(samples.map(p=>threatAt(p,{zones:this.state.zones??[],district:this.districtNear(p)})));this.rollEncounter({point:end,district,threat});}
+    else if(action==='encounter-gm'||action==='encounter-reveal')void this.run(()=>this.adapters.postEncounter?.(this.encounterPreview,{reveal:action==='encounter-reveal'}));
+    else if(action==='encounter-spawn')void this.run(()=>this.adapters.spawnEncounter?.(this.encounterPreview));
+    else if(action==='gig-here'){const location=this.map.byId.get(id);if(location)void this.run(async()=>{const gig=rollGig(location,{players:this.adapters.crewSize?.()??1});await this.adapters.draftGigForLocation?.(location,gig);},'Черновик заказа открыт в «Агенте».');}
+    else if(action==='scene-view'||action==='scene-activate'){const location=this.map.byId.get(id);if(location?.scene)void this.run(()=>this.adapters.openScene?.(location,{activate:action==='scene-activate'}));}
   }
   async savePlace(){
     if(!this.placeDraft)return;
@@ -258,7 +293,8 @@ export class CityControls{
     container.querySelector('.nc-city__detail-links')?.remove();container.querySelector('.nc-city__place-image')?.remove();const links=el('div','nc-city__detail-links');
     links.append(this.button('detail-route','В маршрут',{id:location.id,disabled:!this.map.getMarkers(location).length}));
     if(location.market)links.append(this.button('market','Открыть торговую точку',{id:location.id,disabled:!this.adapters.openMarket}));
-    if(this.isGM())links.append(this.button('detail-edit','Изменить место',{id:location.id}),this.button('dossier','Показать участникам',{id:location.id,disabled:!this.adapters.showDossier}),this.button('draft-job','Создать заказ',{id:location.id,disabled:!this.adapters.draftJobForLocation}));
+    if(this.isGM())links.append(this.button('detail-edit','Изменить место',{id:location.id}),this.button('dossier','Показать участникам',{id:location.id,disabled:!this.adapters.showDossier}),this.button('draft-job','Создать заказ',{id:location.id,disabled:!this.adapters.draftJobForLocation}),this.button('gig-here','Заказ от фиксера',{id:location.id,title:'Случайный заказ с заказчиком, оплатой и осложнением — черновиком в «Агенте»',disabled:!this.adapters.draftGigForLocation}),this.button('encounter-here','Встреча здесь',{id:location.id,title:'Уличная встреча по угрозе района и времени суток',disabled:!this.map.getMarkers(location).length}));
+    if(this.isGM()&&location.scene)links.append(this.button('scene-view','Открыть сцену',{id:location.id,disabled:!this.adapters.openScene}),this.button('scene-activate','Перенести игроков',{id:location.id,disabled:!this.adapters.openScene}));
     container.querySelector('.nc-atlas__detail-actions')?.after(links);
     if(location.image){const image=el('img','nc-city__place-image');image.src=location.image;image.alt=location.name??'Место';image.loading='lazy';container.querySelector('.nc-atlas__description')?.before(image);}
     container.querySelector('.nc-city__jobs')?.remove();

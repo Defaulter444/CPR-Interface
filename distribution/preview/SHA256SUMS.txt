@@ -1,0 +1,2 @@
+6e8585f2b518aadb4a5dab94d3c0401fe8399f1a0b9a2227d05a0f93bacb09d0  night-city-2045-atlas-0.3.0.zip
+f941b4265e78c51d4fb8bfb1c8ea19ee97114c65e29a2133c43fd1a4237eeaea  module.json

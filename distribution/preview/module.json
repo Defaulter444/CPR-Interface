@@ -1,0 +1,56 @@
+{
+  "id": "night-city-2045-atlas",
+  "title": "Night City 2045 — Атлас Мастера",
+  "description": "Атлас кампании Cyberpunk RED: 549 мест, маршруты и время в пути, метки группы, уличные встречи по угрозе района с выставлением NPC на сцену, заказы фиксеров для Агента, сцены мест, ночной режим и связь с Торговлей.",
+  "version": "0.3.0",
+  "authors": [
+    {
+      "name": "Defaulter444",
+      "url": "https://github.com/Defaulter444"
+    },
+    {
+      "name": "Verlierboy",
+      "url": "https://t.me/circleofdms"
+    }
+  ],
+  "compatibility": {
+    "minimum": "12",
+    "verified": "12.331",
+    "maximum": "12.999"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "cyberpunk-red-core",
+        "type": "system"
+      }
+    ]
+  },
+  "esmodules": [
+    "scripts/main.js"
+  ],
+  "styles": [
+    "styles/atlas.css"
+  ],
+  "packs": [
+    {
+      "name": "npc",
+      "label": "Найт-Сити · персонажи",
+      "path": "packs/npc",
+      "type": "Actor",
+      "system": "cyberpunk-red-core",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    }
+  ],
+  "url": "https://github.com/Defaulter444/CPR-Interface",
+  "manifest": "https://raw.githubusercontent.com/Defaulter444/CPR-Interface/refs/heads/claude/pensive-rubin-8opsg3/distribution/preview/module.json",
+  "download": "https://raw.githubusercontent.com/Defaulter444/CPR-Interface/refs/heads/claude/pensive-rubin-8opsg3/distribution/preview/night-city-2045-atlas-0.3.0.zip",
+  "readme": "https://github.com/Defaulter444/CPR-Interface/blob/main/README.md",
+  "bugs": "https://github.com/Defaulter444/CPR-Interface/issues",
+  "changelog": "https://github.com/Defaulter444/CPR-Interface/blob/main/CHANGELOG.md",
+  "license": "https://github.com/Defaulter444/CPR-Interface/blob/main/LICENSE"
+}

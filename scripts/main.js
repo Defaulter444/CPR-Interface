@@ -42,6 +42,9 @@ Hooks.once("init", () => {
     hint: 'Игроки смогут читать справочник, общие места и маршруты, ставить свою метку. Общие данные города доступны участникам; секретные заметки храните в журналах или «Агенте».',
     scope: 'world', config: true, type: Boolean, default: false,
     onChange: () => { application?.refreshCity(); ui.controls?.render(); Hooks.callAll?.('nightCityAtlasAccessChanged'); } });
+  game.settings.register(MODULE_ID, 'nightMode', { name: 'Ночной режим карты',
+    hint: 'С 21:00 до 6:00 по игровым часам карта темнеет, метки и маршруты остаются яркими. Личная настройка.',
+    scope: 'client', config: true, type: Boolean, default: true, onChange: () => application?.refreshCity(false) });
   game.keybindings?.register(MODULE_ID, 'open', { name: 'Открыть атлас Найт-Сити',
     editable: [{ key: 'KeyM', modifiers: ['SHIFT'] }], onDown: () => { void openAtlas(); return true; } });
   game.settings.register(MODULE_ID, "favorites", {
